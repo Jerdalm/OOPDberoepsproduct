@@ -55,7 +55,7 @@ public abstract class GameEngine extends PApplet {
     /**
      * The View is the main canvas that is been drawn by the GameEngine.
      */
-    private View view;
+    protected View view;
 
     /**
      * The FPSCounter shows the Frames Per Second on the screen.
