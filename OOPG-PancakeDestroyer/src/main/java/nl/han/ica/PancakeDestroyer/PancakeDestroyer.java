@@ -34,7 +34,8 @@ public class PancakeDestroyer extends GameEngine{
         player = new Player(this);
         enemy = new NormalEnemy(this);
 
-        addGameObject(enemy, 200, 200);
+        addGameObject(enemy, 0, 400);
+        addGameObject(player, 200, 200);
 
         createDashboard(worldWidth, 150, worldWidth / 2, worldHeight-150);
 
@@ -42,7 +43,6 @@ public class PancakeDestroyer extends GameEngine{
 
     @Override
     public void update() {
-        player.update();
         dashboardText.get(0).setText("Bricks: " + bricks);
         dashboardText.get(1).setText("hoooooiiii");
         dashboardText.get(2).setText("hoi jeremy");
@@ -63,10 +63,5 @@ public class PancakeDestroyer extends GameEngine{
             dashboard.addGameObject(dashboardText.get(i));
         }
         addDashboard(dashboard);
-    }
-
-    private void moveCrosshair() {
-        addGameObject(player, mouseX, mouseY);
-        deleteGameObject(player);
     }
 }

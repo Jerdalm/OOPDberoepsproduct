@@ -16,8 +16,8 @@ public class Player extends SpriteObject {
         super(sprite);
 }
 
-    @Override
     public void update() {
-
+        setX(world.mouseX - 110);
+        setY(world.mouseY + 150);
     }
 }
