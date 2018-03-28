@@ -33,7 +33,7 @@ public class Swordfish extends SpriteObject {
 
     @Override
     public void update() {
-        if (getX()+getWidth()<=0) {
+        if (getX()+ getWidth()<=0) {
             setX(world.getWidth());
         }
 
