@@ -15,9 +15,9 @@ public class NormalEnemy extends SpriteObject {
 
     private NormalEnemy(Sprite sprite) {
         super(sprite);
-        setxSpeed(3);
+        setxSpeed(4);
         setDirection(135);
-        if(getX() <= 400){
+        if(getX() >= 400){
             setDirection(45);
         }
         if(getX() >= 600){
@@ -29,6 +29,9 @@ public class NormalEnemy extends SpriteObject {
     public void update() {
         if (getX()+ getWidth()<=0) {
             setX(world.getWidth());
+        }
+        if (getY()+ getHeight()<=0) {
+            setY(world.getHeight());
         }
 
     }
