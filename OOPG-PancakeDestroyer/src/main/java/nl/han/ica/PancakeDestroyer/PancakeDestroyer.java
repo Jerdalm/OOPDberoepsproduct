@@ -2,6 +2,7 @@ package nl.han.ica.PancakeDestroyer;
 
 import nl.han.ica.OOPDProcessingEngineHAN.Dashboard.Dashboard;
 import nl.han.ica.OOPDProcessingEngineHAN.Engine.GameEngine;
+import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
 import nl.han.ica.waterworld.TextObject;
 import processing.core.PApplet;
@@ -27,8 +28,7 @@ public class PancakeDestroyer extends GameEngine{
         setView(view);
         size(worldWidth, worldHeight);
 
-         player = new Player(this);
-         player.resize()
+        player = new Player(this);
 
         createDashboard(worldWidth, 150, worldWidth / 2, worldHeight-150);
 

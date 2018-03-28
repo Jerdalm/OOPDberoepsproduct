@@ -9,26 +9,15 @@ public class Player extends SpriteObject {
 
     public Player(PancakeDestroyer world) {
         this(new Sprite("src/main/java/nl/han/ica/PancakeDestroyer/media/Crosshair.png"));
-        Sprite.resize(25, 25);
         this.world = world;
-
     }
 
     private Player (Sprite sprite) {
         super(sprite);
-    }
+}
 
     @Override
     public void update() {
-//        setY(100);
-//        setX(100);
 
     }
-<<<<<<< HEAD
-=======
-public void setXY(int x, int y){
-        setY(100);
-        setX(100);
->>>>>>> 35f33758e687a23790d0264fa8804924fb41dae4
-
 }
