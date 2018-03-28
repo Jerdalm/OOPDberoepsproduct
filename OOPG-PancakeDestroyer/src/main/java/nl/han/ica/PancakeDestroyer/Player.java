@@ -2,25 +2,27 @@ package nl.han.ica.PancakeDestroyer;
 
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.SpriteObject;
-import processing.core.PApplet;
 
 public class Player extends SpriteObject {
 
-    final int size=25;
-    private final PancakeDestroyer world;
+    private PancakeDestroyer world;
 
-    public Player(world PancakeDestroyer) {
-        this(new Sprite ("src/main/java/nl/han/ica/PancakeDestroyer/media/Crosshair.jpg"));
-        this.world=world;
+    public Player(PancakeDestroyer world) {
+        this(new Sprite("src/main/java/nl/han/ica/PancakeDestroyer/media/Crosshair.png"));
+        Sprite.resize(25, 25);
+        this.world = world;
+
+    }
+
+    private Player (Sprite sprite) {
+        super(sprite);
     }
 
     @Override
     public void update() {
-
+//        setY(100);
+//        setX(100);
 
     }
-public void setXY(int x, int y){
-        setY(y);
-        setX(x);
-        
+
 }

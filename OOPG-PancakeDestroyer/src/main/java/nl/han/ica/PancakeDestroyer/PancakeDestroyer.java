@@ -12,6 +12,7 @@ public class PancakeDestroyer extends GameEngine{
 
     private ArrayList<TextObject> dashboardText = new ArrayList<TextObject>();
     private int bricks = 8;
+    Player player;
 
     public static void main(String[] args) {
         PApplet.main(new String[]{"nl.han.ica.PancakeDestroyer.PancakeDestroyer"});
@@ -26,12 +27,16 @@ public class PancakeDestroyer extends GameEngine{
         setView(view);
         size(worldWidth, worldHeight);
 
+         player = new Player(this);
+         player.resize()
+
         createDashboard(worldWidth, 150, worldWidth / 2, worldHeight-150);
 
     }
 
     @Override
     public void update() {
+            addGameObject(player, mouseX, mouseY);
             dashboardText.get(0).setText("Bricks: " + bricks);
             dashboardText.get(1).setText("hoooooiiii");
             dashboardText.get(2).setText("hoi jeremy");
