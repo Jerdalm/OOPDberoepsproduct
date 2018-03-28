@@ -24,11 +24,3 @@ public class Player extends SpriteObject {
 //        setX(100);
 
     }
-<<<<<<< HEAD
-=======
-public void setXY(int x, int y){
-        setY(100);
-        setX(100);
->>>>>>> 35f33758e687a23790d0264fa8804924fb41dae4
-
-}

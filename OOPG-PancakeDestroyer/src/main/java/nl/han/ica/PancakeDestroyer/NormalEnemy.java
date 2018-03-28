@@ -8,18 +8,21 @@ public class NormalEnemy extends SpriteObject {
 
     private PancakeDestroyer world;
 
-    public Normalizer(PancakeDestroyer world) {
-        super(new Sprite("foto invoeren"));
+    public NormalEnemy(PancakeDestroyer world) {
+        this(new Sprite("src/main/java/nl/han/ica/PancakeDestroyer/media/EnemyPancake.png"));
         this.world=world;
     }
 
-    private Sprite BadPancake(Sprite sprite) {
+    private NormalEnemy(Sprite sprite) {
         super(sprite);
-
+        setxSpeed(-1);
     }
 
     @Override
     public void update() {
+        if (getX()+ getWidth()<=0) {
+            setX(world.getWidth());
+        }
 
     }
 }
