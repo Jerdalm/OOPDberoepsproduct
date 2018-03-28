@@ -77,14 +77,14 @@ public class WaterWorld extends GameEngine {
      * @param screenHeight Hoogte van het scherm
      * @param zoomFactor Factor waarmee wordt ingezoomd
      */
-    private void createViewWithViewport(int worldWidth,int worldHeight,int screenWidth,int screenHeight,float zoomFactor) {
-        EdgeFollowingViewport viewPort = new EdgeFollowingViewport(player, (int)Math.ceil(screenWidth/zoomFactor),(int)Math.ceil(screenHeight/zoomFactor),0,0);
-        viewPort.setTolerance(50, 50, 50, 50);
-        View view = new View(viewPort, worldWidth,worldHeight);
-        setView(view);
-        size(screenWidth, screenHeight);
-        view.setBackground(loadImage("src/main/java/nl/han/ica/waterworld/media/background.jpg"));
-    }
+//    private void createViewWithViewport(int worldWidth,int worldHeight,int screenWidth,int screenHeight,float zoomFactor) {
+//        EdgeFollowingViewport viewPort = new EdgeFollowingViewport(player, (int)Math.ceil(screenWidth/zoomFactor),(int)Math.ceil(screenHeight/zoomFactor),0,0);
+//        viewPort.setTolerance(50, 50, 50, 50);
+//        View view = new View(viewPort, worldWidth,worldHeight);
+//        setView(view);
+//        size(screenWidth, screenHeight);
+//        view.setBackground(loadImage("src/main/java/nl/han/ica/waterworld/media/background.jpg"));
+//    }
 
     /**
      * Initialiseert geluid
