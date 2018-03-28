@@ -20,7 +20,7 @@ public class Player extends SpriteObject {
 
     }
 public void setXY(int x, int y){
-        setY(y);
-        setX(x);
-        
+        setY(100);
+        setX(100);
+
 }
