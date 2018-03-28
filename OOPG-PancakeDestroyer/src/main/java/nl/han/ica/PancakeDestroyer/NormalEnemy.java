@@ -1,17 +1,25 @@
 package nl.han.ica.PancakeDestroyer;
 
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
+import nl.han.ica.OOPDProcessingEngineHAN.Objects.SpriteObject;
 
 
-public class NormalEnemy {
+public class NormalEnemy extends SpriteObject {
 
-    public BadPancake(PancakeDestroyer world) {
-        this(new Sprite("foto invoeren"));
+    private PancakeDestroyer world;
+
+    public Normalizer(PancakeDestroyer world) {
+        super(new Sprite("foto invoeren"));
         this.world=world;
     }
 
-    private BadPancake(Sprite sprite) {
+    private Sprite BadPancake(Sprite sprite) {
         super(sprite);
+
+    }
+
+    @Override
+    public void update() {
 
     }
 }
