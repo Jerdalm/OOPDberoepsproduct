@@ -3,3 +3,4 @@ OOPG-PancakeDestroyer/.idea/workspace.xml
 OOPG-PancakeDestroyer/src/main/java/nl/han/ica/waterworld/media/bubblesPopped.txt
 OOPG-PancakeDestroyer/src/main/java/nl/han/ica/OOPDProcessingEngineHAN/Engine/GameEngine.java
 OOPG-PancakeDestroyer/target/classes/nl/han/ica/OOPDProcessingEngineHAN/Engine/GameEngine.class
+*.xml
