@@ -15,7 +15,14 @@ public class NormalEnemy extends SpriteObject {
 
     private NormalEnemy(Sprite sprite) {
         super(sprite);
-        setxSpeed(-1);
+        setxSpeed(3);
+        setDirection(135);
+        if(getX() <= 400){
+            setDirection(45);
+        }
+        if(getX() >= 600){
+            setDirection(135);
+        }
     }
 
     @Override
