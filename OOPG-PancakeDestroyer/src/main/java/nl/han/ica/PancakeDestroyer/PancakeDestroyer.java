@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class PancakeDestroyer extends GameEngine{
 
     private ArrayList<TextObject> dashboardText = new ArrayList<TextObject>();
-    private int bricks = 8;
+    private int points = 0;
     Player player;
     NormalEnemy enemy;
 
@@ -25,38 +25,43 @@ public class PancakeDestroyer extends GameEngine{
         int worldWidth=1200;
         int worldHeight=800;
 
-        View view = new View(1000, 1000);
-        view.setBackground(255, 0, 255);
-
-        setView(view);
-        size(worldWidth, worldHeight);
-
-        player = new Player(this);
-        enemy = new NormalEnemy(this);
-
-        addGameObject(enemy, 0, 400);
-        addGameObject(player, 200, 200);
-
+        createView(worldWidth, worldHeight, 255, 0, 255);
+        createObjects();
         createDashboard(worldWidth, 150, worldWidth / 2, worldHeight-150);
 
     }
 
     @Override
     public void update() {
-        dashboardText.get(0).setText("Bricks: " + bricks);
-        dashboardText.get(1).setText("hoooooiiii");
-        dashboardText.get(2).setText("hoi jeremy");
+        updateDashboard();
     }
 
-    public void mousePressed() {
-        bricks--;
+    private void createView(int worldWidth, int worldHeight, int r, int g, int b) {
+        View view = new View(worldWidth, worldHeight);
+        view.setBackground(r, g, b);
+
+        setView(view);
+        size(worldWidth, worldHeight);
+    }
+
+    private void createObjects () {
+        player = new Player(this);
+        addGameObject(player, 200, 200);
+        enemy = new NormalEnemy(this);
+        addGameObject(enemy, 0, 400);
+    }
+
+    private void updateDashboard () {
+        dashboardText.get(0).setText("Bricks: " + player.getBricks());
+        dashboardText.get(1).setText("Trown Bricks: " + player.getTrownBricks());
+        dashboardText.get(2).setText("points: " + points);
     }
 
     private void createDashboard(int dashboardWidth,int dashboardHeight, int x, int y) {
         Dashboard dashboard = new Dashboard(x, y, dashboardWidth, dashboardHeight);
         dashboard.setBackground(138,144,150);
         for (int i = 0; i < 3; i ++) {
-            int yNew= - i * 50 + y;
+            int yNew= - i * 25 + y;
             dashboardText.add(new TextObject(""));
             dashboardText.get(i) .setX(-x);
             dashboardText.get(i) .setY(-yNew);
