@@ -16,17 +16,8 @@ public class Player extends SpriteObject {
         this.world = world;
     }
 
-    private Player (Sprite sprite) {
+    private Player(Sprite sprite) {
         super(sprite);
-    }
-
-    public void mousePressed() {
-        if
-
-    }
-
-    public void mouseReleased(int x, int y, int button) {
-        // This method can be overridden by the user.
     }
 
     public int getTrownBricks() {
