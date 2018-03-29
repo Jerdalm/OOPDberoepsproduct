@@ -18,10 +18,9 @@ public class NormalEnemy extends SpriteObject {
 
     private NormalEnemy(Sprite sprite) {
         super(sprite);
-        setxSpeed(10);
-        setX(0);
-        setY(300);
-
+        setxSpeed(5);
+        setX(10);
+        setY(10);
     }
 
     @Override
@@ -33,22 +32,21 @@ public class NormalEnemy extends SpriteObject {
             setY(world.getHeight());
         }
         if (getX()- getWidth()>= world.getWidth()) {
-            setX(world.getWidth());
+            setX(0);
         }
         if (getY()- getHeight()>= world.getHeight()) {
-            setY(world.getHeight());
+            setY(0);
         }
 
-        if (getX() > getWidth()*0.8 && getY() + getHeight() < 450){
+        if (getX() > getWidth()*0.8 && getY() + getHeight() < 550){
             System.out.println(getX());
             System.out.println(getY());
             setDirection(225);
         }
-        if (getX() + getWidth() > getWidth()* 0.2 && getY() + getHeight() > 450){
+        if (getX()+ getWidth() < getWidth()* 0.2) {
             System.out.println(getX());
             System.out.println(getY());
             setDirection(90);
         }
-
     }
 }
