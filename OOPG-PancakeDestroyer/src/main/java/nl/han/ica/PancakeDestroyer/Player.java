@@ -11,14 +11,22 @@ public class Player extends SpriteObject {
     private int hits = 0;
 
     public Player(PancakeDestroyer world) {
-        this(new Sprite("src/main/java/nl/han/ica/PancakeDestroyer/media/Crosshairoud.png"));
-        setWidth(25);
-        setHeight(25);
+        this(new Sprite("src/main/java/nl/han/ica/PancakeDestroyer/media/newcrosshair.png"));
+
         this.world = world;
     }
 
     private Player (Sprite sprite) {
         super(sprite);
+    }
+
+    public void mousePressed() {
+        if
+
+    }
+
+    public void mouseReleased(int x, int y, int button) {
+        // This method can be overridden by the user.
     }
 
     public int getTrownBricks() {
@@ -43,7 +51,7 @@ public class Player extends SpriteObject {
     }
 
     public void update() {
-        setX(world.mouseX - 110);
-        setY(world.mouseY + 150);
+        setX(world.mouseX - getWidth() / 2);
+        setY(world.mouseY - getHeight() / 2);
     }
 }
