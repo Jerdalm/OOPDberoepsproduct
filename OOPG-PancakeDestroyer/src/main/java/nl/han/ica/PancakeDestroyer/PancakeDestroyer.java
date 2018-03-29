@@ -55,12 +55,13 @@ public class PancakeDestroyer extends GameEngine{
         dashboardText.get(0).setText("Bricks: " + player.getBricks());
         dashboardText.get(1).setText("Trown Bricks: " + player.getTrownBricks());
         dashboardText.get(2).setText("points: " + points);
+        dashboardText.get(3).setText("Pancakes Hit: " + player.getHits());
     }
 
     private void createDashboard(int dashboardWidth,int dashboardHeight, int x, int y) {
         Dashboard dashboard = new Dashboard(x, y, dashboardWidth, dashboardHeight);
         dashboard.setBackground(138,144,150);
-        for (int i = 0; i < 3; i ++) {
+        for (int i = 0; i < 4; i ++) {
             int yNew= - i * 25 + y;
             dashboardText.add(new TextObject(""));
             dashboardText.get(i) .setX(-x);

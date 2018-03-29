@@ -8,9 +8,12 @@ public class Player extends SpriteObject {
     private PancakeDestroyer world;
     private int bricks = 20;
     private int trownBricks = 0;
+    private int hits = 0;
 
     public Player(PancakeDestroyer world) {
-        this(new Sprite("src/main/java/nl/han/ica/PancakeDestroyer/media/Crosshair.png"));
+        this(new Sprite("src/main/java/nl/han/ica/PancakeDestroyer/media/Crosshairoud.png"));
+        setWidth(25);
+        setHeight(25);
         this.world = world;
     }
 
@@ -20,6 +23,14 @@ public class Player extends SpriteObject {
 
     public int getTrownBricks() {
         return trownBricks;
+    }
+
+    public int getHits() {
+        return hits;
+    }
+
+    public void setHits(int hits) {
+        this.hits = hits;
     }
 
     public void setBricks(int bricks) {
