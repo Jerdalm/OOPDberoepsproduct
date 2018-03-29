@@ -38,12 +38,12 @@ public class NormalEnemy extends SpriteObject {
             setY(0);
         }
 
-        if (getX() > getWidth()*0.8 && getY() + getHeight() < 550){
+        if (getX() > 800 && getY() + getHeight() < 550){
             System.out.println(getX());
             System.out.println(getY());
             setDirection(225);
         }
-        if (getX()+ getWidth() < getWidth()* 0.2) {
+        if (getX()+ getWidth() < 400) {
             System.out.println(getX());
             System.out.println(getY());
             setDirection(90);
