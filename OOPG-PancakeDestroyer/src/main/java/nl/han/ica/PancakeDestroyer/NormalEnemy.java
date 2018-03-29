@@ -10,7 +10,7 @@ public class NormalEnemy extends SpriteObject {
 
 
     public NormalEnemy(PancakeDestroyer world) {
-        this(new Sprite("src/main/java/nl/han/ica/PancakeDestroyer/media/EnemyPancake.png"));
+        this(new Sprite("src/main/java/nl/han/ica/PancakeDestroyer/media/EvilPancake.png"));
         this.world=world;
 //        this.setX(x);
 //        this.setY(y);
