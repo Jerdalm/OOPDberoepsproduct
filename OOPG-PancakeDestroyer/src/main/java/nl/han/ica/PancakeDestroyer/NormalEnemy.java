@@ -3,6 +3,8 @@ package nl.han.ica.PancakeDestroyer;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.SpriteObject;
 
+import java.util.Random;
+
 
 public class NormalEnemy extends SpriteObject {
 
@@ -37,16 +39,21 @@ public class NormalEnemy extends SpriteObject {
         if (getY()- getHeight()>= world.getHeight()) {
             setY(0);
         }
+        Random r = new Random();
+        Random t = new Random();
 
+        r.nextInt(1);
+        t.nextInt(800);
+
+
+        if(r == 0){
+            
+        }
         if (getX() > 800 && getY() + getHeight() < 550){
-            System.out.println(getX());
-            System.out.println(getY());
             setDirection(225);
         }
         if (getX()+ getWidth() < 500) {
-            System.out.println(getX());
-            System.out.println(getY());
-            setDirection(90);
+            setDirection(91);
         }
     }
 }
