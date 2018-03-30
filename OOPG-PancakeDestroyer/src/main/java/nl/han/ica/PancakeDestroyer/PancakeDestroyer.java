@@ -77,6 +77,7 @@ public class PancakeDestroyer extends GameEngine{
 
     public void mousePressed() {
         if (enemy.mouseOverPancake()) {
+            enemy.getHit();
             player.setHits(player.getHits() + 1);
         }
         if (enemy2.mouseOverPancake()) {

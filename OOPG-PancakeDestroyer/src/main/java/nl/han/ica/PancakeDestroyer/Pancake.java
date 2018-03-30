@@ -12,6 +12,8 @@ public abstract class Pancake extends SpriteObject {
         this.world = world;
     }
 
+    public abstract void getHit();
+
     public boolean mouseOverPancake() {
         if (world.mouseX > getX() && world.mouseX < (getX() + getWidth()) && world.mouseY > getY()
                 && world.mouseY < (getY() + getHeight())) {
