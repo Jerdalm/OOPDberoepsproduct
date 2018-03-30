@@ -20,9 +20,14 @@ public class NormalEnemy extends SpriteObject {
 
     private NormalEnemy(Sprite sprite) {
         super(sprite);
+//        Random r = new Random();
+//        r.nextInt(1);
+//        Random t = new Random();
+//        t.nextFloat();
+//        float tFloat = 800.00 * t;
         setxSpeed(5);
         setX(10);
-        setY(10);
+        setY(0);
     }
 
     @Override
@@ -38,16 +43,6 @@ public class NormalEnemy extends SpriteObject {
         }
         if (getY()- getHeight()>= world.getHeight()) {
             setY(0);
-        }
-        Random r = new Random();
-        Random t = new Random();
-
-        r.nextInt(1);
-        t.nextInt(800);
-
-
-        if(r == 0){
-            
         }
         if (getX() > 800 && getY() + getHeight() < 550){
             setDirection(225);
