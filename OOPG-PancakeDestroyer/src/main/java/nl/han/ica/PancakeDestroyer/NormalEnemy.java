@@ -9,6 +9,8 @@ import java.util.Random;
 public class NormalEnemy extends Pancake {
 
     private Random r = new Random();
+    private Random t = new Random();
+    private Random Rdirection = new Random();
     private int randomNumber;
     private float Ycod;
 
@@ -17,31 +19,28 @@ public class NormalEnemy extends Pancake {
         super(new Sprite("src/main/java/nl/han/ica/PancakeDestroyer/media/EvilPancake.png"), world);
         randomNumber = r.nextInt(800);
         Ycod = randomNumber;
-        Random t = new Random();
-        t.nextFloat();
-        float tFloat = 800;
+        randomNumber = r.nextInt(0);
         setxSpeed(5);
-        setX(10);
         setY(Ycod);
+        if(r.equals(0)) {
+            setX(-200);
+            setDirection(90);
+        }else{
+            setX(world.getWidth()+200);
+            setDirection(270);
+        }
+    }
+
+    public void getHit(){
+        
     }
 
     @Override
     public void update() {
         System.out.println(Ycod);
-        if (getX()+ getWidth()<=0) {
-            setX(world.getWidth());
-        }
-        if (getY()+ getHeight()<=0) {
-            setY(world.getHeight());
-        }
-        if (getX()- getWidth()>= world.getWidth()) {
-            setX(0);
-        }
-        if (getY()- getHeight()>= world.getHeight()) {
-            setY(0);
-        }
-        if(r.equals(0)){
-            setDirection(225);
+
+        if(r.equals(0) && getX() > 800){
+            setDirection(Rdirection);
         }
 
 //        }
