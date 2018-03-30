@@ -6,7 +6,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.SpriteObject;
 import java.util.Random;
 
 
-public class NormalEnemy extends SpriteObject {
+public class NormalEnemy extends Pancake {
 
     private PancakeDestroyer world;
     private Random r = new Random();
@@ -15,15 +15,10 @@ public class NormalEnemy extends SpriteObject {
 
 
     public NormalEnemy(PancakeDestroyer world) {
-        this(new Sprite("src/main/java/nl/han/ica/PancakeDestroyer/media/EvilPancake.png"));
+        super(new Sprite("src/main/java/nl/han/ica/PancakeDestroyer/media/EvilPancake.png"), world);
         this.world=world;
         randomNumber = r.nextInt(1);
         Ycod = randomNumber*800;
-    }
-
-    private NormalEnemy(Sprite sprite) {
-        super(sprite);
-
         r.nextInt(1);
         Random t = new Random();
         t.nextFloat();
