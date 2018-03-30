@@ -15,9 +15,8 @@ public class NormalEnemy extends Pancake {
 
     public NormalEnemy(PancakeDestroyer world) {
         super(new Sprite("src/main/java/nl/han/ica/PancakeDestroyer/media/EvilPancake.png"), world);
-        randomNumber = r.nextInt(1);
-        Ycod = randomNumber*800;
-        r.nextInt(1);
+        randomNumber = r.nextInt(800);
+        Ycod = randomNumber;
         Random t = new Random();
         t.nextFloat();
         float tFloat = 800;
@@ -28,6 +27,7 @@ public class NormalEnemy extends Pancake {
 
     @Override
     public void update() {
+        System.out.println(Ycod);
         if (getX()+ getWidth()<=0) {
             setX(world.getWidth());
         }

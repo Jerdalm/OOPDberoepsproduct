@@ -52,7 +52,7 @@ public class PancakeDestroyer extends GameEngine{
         enemy = new TestPancake(this);
         addGameObject(enemy, 0, 0, 1);
         enemy2 = new NormalEnemy(this);
-        addGameObject(enemy2, 0, 0, 1);
+        addGameObject(enemy2,1);
     }
 
     private void updateDashboard () {
