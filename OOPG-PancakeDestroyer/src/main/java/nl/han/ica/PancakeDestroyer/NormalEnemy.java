@@ -22,21 +22,22 @@ public class NormalEnemy extends Pancake {
 
     public NormalEnemy(PancakeDestroyer world) {
         super(new Sprite("src/main/java/nl/han/ica/PancakeDestroyer/media/EvilPancake.png"), world);
-        randomYcod = yStartpoint.nextInt(680);//zet de random om naar een int
+        randomYcod = yStartpoint.nextInt(690);//zet het random beginpunt voor Y om naar een int
         Ycod = randomYcod;//zet de int om naar een float
 
-        randomXcod = Xstartpoint.nextInt(200);//zet de random om naar een int
+        randomXcod = Xstartpoint.nextInt(200);//zet het random beginpunt voor X om naar een int
         Xcod = randomXcod;//zet de int om naar een float
 
-        dir = Rdirection.nextInt(360);//zet de random om naar een int
+        dir = Rdirection.nextInt(360);//zet het random aantal graden om naar een int
+
         setxSpeed(6);
         setY(Ycod);
 
-        if (Xcod < 100) {
-            setX(-200);
+        if (Xcod < 100) {//initialiseer beginpunt
+            setX(-getWidth());
             setDirection(90);
         } else {
-            setX(world.getWidth() + 200);
+            setX(world.getWidth() + getWidth());
             setDirection(270);
         }
     }
@@ -48,25 +49,14 @@ public class NormalEnemy extends Pancake {
     @Override
     public void update() {
 
-        if (Xcod < 100 && getX() >=900 && !turningPoint) {
+        if (Xcod < 100 && getX() >= 900 && !turningPoint) {//maak een keerpunt op 70 procent van de afgelegde weg
             setDirection(dir);
-            turningPoint = true;
-            System.out.println("biem: "+ Xcod);
-            System.out.println(Ycod);
+            turningPoint = true;//zorg dat het keerpunt is geactiveerd en niet meer gebruikt kan worden
         }
-        if(Xcod > 100 && getX() <=300 && !turningPoint) {
+        if (Xcod > 100 && getX() <= 300 && !turningPoint) {
             setDirection(dir);
-            turningPoint = true;
-            System.out.println("biem: "+ Xcod);
-            System.out.println(Ycod);
-        }
-//        }
-//        if (getX() > 800 && getY() + getHeight() < 550){
-//            setDirection(225);
-//        }
-//        if (getX()+ getWidth() < 500) {
-//            setDirection(91);
-//        }
+            turningPoint = true;//zorg dat het keerpunt is geactiveerd en niet meer gebruikt kan worden
         }
     }
+}
 
