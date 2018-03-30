@@ -9,25 +9,28 @@ import java.util.Random;
 public class NormalEnemy extends SpriteObject {
 
     private PancakeDestroyer world;
+    private Random r = new Random();
+    private int randomNumber;
+    private float Ycod;
 
 
     public NormalEnemy(PancakeDestroyer world) {
         this(new Sprite("src/main/java/nl/han/ica/PancakeDestroyer/media/EvilPancake.png"));
         this.world=world;
-//        this.setX(x);
-//        this.setY(y);
+        randomNumber = r.nextInt(1);
+        Ycod = randomNumber*800;
     }
 
     private NormalEnemy(Sprite sprite) {
         super(sprite);
-//        Random r = new Random();
-//        r.nextInt(1);
-//        Random t = new Random();
-//        t.nextFloat();
-//        float tFloat = 800.00 * t;
+
+        r.nextInt(1);
+        Random t = new Random();
+        t.nextFloat();
+        float tFloat = 800;
         setxSpeed(5);
         setX(10);
-        setY(0);
+        setY(Ycod);
     }
 
     @Override
@@ -44,11 +47,16 @@ public class NormalEnemy extends SpriteObject {
         if (getY()- getHeight()>= world.getHeight()) {
             setY(0);
         }
-        if (getX() > 800 && getY() + getHeight() < 550){
+        if(r.equals(0)){
             setDirection(225);
         }
-        if (getX()+ getWidth() < 500) {
-            setDirection(91);
-        }
+
+//        }
+//        if (getX() > 800 && getY() + getHeight() < 550){
+//            setDirection(225);
+//        }
+//        if (getX()+ getWidth() < 500) {
+//            setDirection(91);
+//        }
     }
 }
