@@ -18,6 +18,9 @@ public class NormalEnemy extends Pancake {
     private float Ycod;
     private float Xcod;
     private boolean turningPoint = false;
+    private boolean hit = false;
+    private float hitX = 0;
+    private int points = 5;
 
 
     public NormalEnemy(PancakeDestroyer world) {
@@ -30,7 +33,7 @@ public class NormalEnemy extends Pancake {
 
         dir = Rdirection.nextInt(360);//zet het random aantal graden om naar een int
 
-        setxSpeed(6);
+        setxSpeed(10);
         setY(Ycod);
 
         if (Xcod < 100) {//initialiseer beginpunt
@@ -42,20 +45,38 @@ public class NormalEnemy extends Pancake {
         }
     }
 
-    public void getHit() {
-
+    public int getHit() {
+        if (hit == false) {
+            setDirection(225);
+            hit = true;
+            hitX = getX();
+            return points;
+        } else {
+            return 0;
+        }
     }
+
 
     @Override
     public void update() {
-
-        if (Xcod < 100 && getX() >= 900 && !turningPoint) {//maak een keerpunt op 70 procent van de afgelegde weg
-            setDirection(dir);
-            turningPoint = true;//zorg dat het keerpunt is geactiveerd en niet meer gebruikt kan worden
-        }
-        if (Xcod > 100 && getX() <= 300 && !turningPoint) {
-            setDirection(dir);
-            turningPoint = true;//zorg dat het keerpunt is geactiveerd en niet meer gebruikt kan worden
+        if (hit == false) {
+            if (Xcod < 100 && getX() >= 900 && !turningPoint) {//maak een keerpunt op 70 procent van de afgelegde weg
+                setDirection(dir);
+                turningPoint = true;//zorg dat het keerpunt is geactiveerd en niet meer gebruikt kan worden
+            }
+            if (Xcod > 100 && getX() <= 300 && !turningPoint) {
+                setDirection(dir);
+                turningPoint = true;//zorg dat het keerpunt is geactiveerd en niet meer gebruikt kan worden
+            }
+        } else {
+            if (getX() <= hitX - 20) {
+                System.out.println("1");
+                setDirection(125);
+            }
+            if (getX() >= hitX + 20) {
+                System.out.println("2");
+                setDirection(225);
+            }
         }
     }
 }

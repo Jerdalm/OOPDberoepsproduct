@@ -16,7 +16,8 @@ public class PancakeDestroyer extends GameEngine {
     private int points = 0;
     Player player;
     Pancake enemy;
-    // Pancake enemy2;
+    Pancake enemy2;
+    Pancake enemy3;
 
     public static void main(String[] args) {
         PApplet.main(new String[]{"nl.han.ica.PancakeDestroyer.PancakeDestroyer"});
@@ -50,8 +51,12 @@ public class PancakeDestroyer extends GameEngine {
     private void createObjects() {
         player = new Player(this);
         addGameObject(player, 0, 0, 5);
-        enemy = new TestPancake(this);
-        addGameObject(enemy, 0, 0, 1);
+        enemy = new NormalEnemy(this);
+        addGameObject(enemy, 1);
+        enemy2 = new NormalEnemy(this);
+        addGameObject(enemy2, 1);
+        enemy3 = new NormalEnemy(this);
+        addGameObject(enemy3, 1);
         //enemy2 = new NormalEnemy(this);
         //addGameObject(enemy2,1);
     }
@@ -79,6 +84,20 @@ public class PancakeDestroyer extends GameEngine {
     public void mousePressed() {
         if (enemy.mouseOverPancake()) {
             int plusPoints = enemy.getHit();
+            if (plusPoints > 0) {
+                player.setHits(player.getHits() + 1);
+                points = points + plusPoints;
+            }
+        }
+        if (enemy2.mouseOverPancake()) {
+            int plusPoints = enemy2.getHit();
+            if (plusPoints > 0) {
+                player.setHits(player.getHits() + 1);
+                points = points + plusPoints;
+            }
+        }
+        if (enemy3.mouseOverPancake()) {
+            int plusPoints = enemy3.getHit();
             if (plusPoints > 0) {
                 player.setHits(player.getHits() + 1);
                 points = points + plusPoints;
