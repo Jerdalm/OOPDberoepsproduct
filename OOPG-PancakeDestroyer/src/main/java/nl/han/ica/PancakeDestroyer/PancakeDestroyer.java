@@ -15,10 +15,11 @@ public class PancakeDestroyer extends GameEngine {
 
     private int worldWidth;
     private int worldHeight;
-    private ArrayList<TextObject> dashboardText = new ArrayList<>();
-    private int points = 0;
-    private Player player;
+
     private ArrayList<Pancake> pancakes = new ArrayList<>();
+    private ArrayList<TextObject> dashboardText = new ArrayList<>();
+
+    private Player player;
 
     public static void main(String[] args) {
         PApplet.main(new String[]{"nl.han.ica.PancakeDestroyer.PancakeDestroyer"});
@@ -81,14 +82,12 @@ public class PancakeDestroyer extends GameEngine {
     private void createObjects() {
         player = new Player(this);
         addGameObject(player, 0, 0, 5);
-        //enemy2 = new NormalEnemy(this);
-        //addGameObject(enemy2,1);
     }
 
     private void updateDashboard() {
         dashboardText.get(0).setText("Bricks: " + player.getBricks());
         dashboardText.get(1).setText("Trown Bricks: " + player.getTrownBricks());
-        dashboardText.get(2).setText("Points: " + points);
+        dashboardText.get(2).setText("Points: " + player.getPoints());
         dashboardText.get(3).setText("Pancakes Hit: " + player.getHits());
     }
 
@@ -106,7 +105,8 @@ public class PancakeDestroyer extends GameEngine {
     }
 
     public void mousePressed() {
-        int totalPoints = 0;
+        player.setBricks(player.getBricks() - 1);
+        int points = player.getPoints();
         for (Pancake pancake : pancakes) {
             if (pancake.mouseOverPancake()) {
                 int plusPoints = pancake.getHit();
@@ -114,13 +114,10 @@ public class PancakeDestroyer extends GameEngine {
                     player.setHits(player.getHits() + 1);
                     points = points + plusPoints;
                 } else {
-                    totalPoints = totalPoints + plusPoints;
                 }
             }
         }
-        if (totalPoints < 10000) {
-            player.setBricks(player.getBricks() - 1);
-        }
+        player.setPoints(points);
     }
 
     public int getWorldWidth() {

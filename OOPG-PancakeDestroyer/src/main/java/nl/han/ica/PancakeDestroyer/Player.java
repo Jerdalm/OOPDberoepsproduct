@@ -6,6 +6,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.SpriteObject;
 public class Player extends SpriteObject {
 
     private PancakeDestroyer world;
+    private int points = 0;
     private int bricks = 20;
     private int trownBricks = 0;
     private int hits = 0;
@@ -28,7 +29,21 @@ public class Player extends SpriteObject {
         return hits;
     }
 
+    public void setPoints(int points) {
+        this.points = points;
+    }
+
+    public void setTrownBricks(int trownBricks) {
+        this.trownBricks = trownBricks;
+    }
+
+    public int getPoints() {
+
+        return points;
+    }
+
     public void setHits(int hits) {
+
         this.hits = hits;
     }
 

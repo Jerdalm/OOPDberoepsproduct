@@ -33,7 +33,7 @@ public class NormalEnemy extends Pancake {
             hitX = getX();
             return points;
         } else {
-            return 0;
+            return -1000000;
         }
     }
 
