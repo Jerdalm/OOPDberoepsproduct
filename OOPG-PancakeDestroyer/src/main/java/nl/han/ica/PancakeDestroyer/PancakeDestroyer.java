@@ -56,7 +56,7 @@ public class PancakeDestroyer extends GameEngine {
     private void spawnPancakes() {
         System.out.println(1);
         if (pancakes.size() < 5) {
-            Pancake pancake = new NormalEnemy(this);
+            Pancake pancake = new FriendlyPancake(this);
             System.out.println(2);
             pancakes.add(pancake);
             addGameObject(pancake, 1);
@@ -99,28 +99,6 @@ public class PancakeDestroyer extends GameEngine {
     }
 
     public void mousePressed() {
-//        if (enemy.mouseOverPancake()) {
-//            int plusPoints = enemy.getHit();
-//            if (plusPoints > 0) {
-//                player.setHits(player.getHits() + 1);
-//                points = points + plusPoints;
-//            }
-//        }
-//        if (enemy2.mouseOverPancake()) {
-//            int plusPoints = enemy2.getHit();
-//            if (plusPoints > 0) {
-//                player.setHits(player.getHits() + 1);
-//                points = points + plusPoints;
-//            }
-//        }
-//        if (enemy3.mouseOverPancake()) {
-//            int plusPoints = enemy3.getHit();
-//            if (plusPoints > 0) {
-//                player.setHits(player.getHits() + 1);
-//                points = points + plusPoints;
-//            }
-//        }
-
         for (Pancake pancake : pancakes) {
             if (pancake.mouseOverPancake()) {
                 int plusPoints = pancake.getHit();
@@ -133,8 +111,13 @@ public class PancakeDestroyer extends GameEngine {
 
 
     }
-    //if (enemy2.mouseOverPancake()) {
-    //   player.setHits(player.getHits() + 1);
-    // }
+
+    public int getWorldWidth() {
+        return worldWidth;
+    }
+
+    public int getWorldHeight() {
+        return worldHeight;
+    }
 }
 

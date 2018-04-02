@@ -9,6 +9,7 @@ import java.util.Random;
 
 public class NormalEnemy extends Pancake {
 
+    private int points = 5;
 
     public NormalEnemy(PancakeDestroyer world) {
         super(new Sprite("src/main/java/nl/han/ica/PancakeDestroyer/media/EvilPancake.png"), world);
@@ -16,7 +17,7 @@ public class NormalEnemy extends Pancake {
         setxSpeed(10);
         setY(Ycod);
 
-        if (Xcod < 100) {//initialiseer beginpunt
+        if (Xcod < world.getWorldWidth() / 2 - 100) {//initialiseer beginpunt
             setX(-getWidth());
             setDirection(90);
         } else {
@@ -52,11 +53,11 @@ public class NormalEnemy extends Pancake {
 //                    setDirection(270);
 //                }
 //            }
-            if (Xcod < 100 && getX() >= 900 && !turningPoint) {//maak een keerpunt op 70 procent van de afgelegde weg
+            if (Xcod < world.getWorldWidth() / 2 && getX() >= 900 && !turningPoint) {//maak een keerpunt op 70 procent van de afgelegde weg
                 setDirection(dir);
                 turningPoint = true;//zorg dat het keerpunt is geactiveerd en niet meer gebruikt kan worden
             }
-            if (Xcod > 100 && getX() <= 300 && !turningPoint) {
+            if (Xcod > world.getWorldWidth() / 2 && getX() <= 300 && !turningPoint) {
                 setDirection(dir);
                 turningPoint = true;//zorg dat het keerpunt is geactiveerd en niet meer gebruikt kan worden
             }
