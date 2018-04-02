@@ -16,6 +16,7 @@ public class PancakeDestroyer extends GameEngine {
 
     private int worldWidth;
     private int worldHeight;
+    private boolean gameOver = false;
 
     private ArrayList<Pancake> pancakes = new ArrayList<>();
     private ArrayList<TextObject> dashboardText = new ArrayList<>();
@@ -40,9 +41,17 @@ public class PancakeDestroyer extends GameEngine {
 
     @Override
     public void update() {
-        updateDashboard();
-        spawnPancakes();
-        deletePancakes();
+        if (gameOver == false) {
+            updateDashboard();
+            spawnPancakes();
+            deletePancakes();
+
+            if (player.getBricks() == 0) {
+                gameOver = true;
+            }
+        } else {
+            gameOver();
+        }
     }
 
     private void deletePancakes() {
@@ -54,6 +63,12 @@ public class PancakeDestroyer extends GameEngine {
             }
         }
 
+    }
+
+    private void gameOver() {
+        Dashboard gameOver = new Dashboard(0, 300, worldWidth, 100);
+        gameOver.setBackground(138, 144, 150);
+        addDashboard(gameOver);
     }
 
     private void spawnPancakes() {
