@@ -7,6 +7,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
 import nl.han.ica.waterworld.TextObject;
 import processing.core.PApplet;
+import processing.core.PImage;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -72,8 +73,10 @@ public class PancakeDestroyer extends GameEngine {
     }
 
     private void createView(int worldWidth, int worldHeight, int r, int g, int b) {
+        PApplet image = new PApplet();
         View view = new View(worldWidth, worldHeight);
-        view.setBackground(r, g, b);
+        //view.setBackground(r, g, b);
+        view.setBackground(image.loadImage("src/main/java/nl/han/ica/PancakeDestroyer/media/Background.jpg"));
 
         setView(view);
         size(worldWidth, worldHeight);
