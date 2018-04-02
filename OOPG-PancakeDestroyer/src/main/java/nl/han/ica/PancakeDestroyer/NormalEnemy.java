@@ -13,7 +13,7 @@ public class NormalEnemy extends Pancake {
     public NormalEnemy(PancakeDestroyer world) {
         super(new Sprite("src/main/java/nl/han/ica/PancakeDestroyer/media/EvilPancake.png"), world);
 
-        setxSpeed(3);
+        setxSpeed(10);
         setY(Ycod);
 
         if (Xcod < 100) {//initialiseer beginpunt
@@ -27,7 +27,7 @@ public class NormalEnemy extends Pancake {
 
     public int getHit() {
         if (hit == false) {
-            setDirection(225);
+            setDirection(180);
             hit = true;
             hitX = getX();
             return points;
@@ -40,36 +40,31 @@ public class NormalEnemy extends Pancake {
     @Override
     public void update() {
         if (hit == false) {
-            if (Xcod < 100 && getX() >= 600) {//maak een keerpunt op 70 procent van de afgelegde weg
-                if (/*randomYcod > 300 && */!turningPoint) {
-                    setDirection(45);
-                    turningPoint = true;//zorg dat het keerpunt is geactiveerd en niet meer gebruikt kan worden
-                }
-                if (randomYcod > 300 && getX() >= 750 && turningPoint) {
-                    setDirection(300);
-                    turningPoint = false;
-                } else {
-                    setDirection(270);
-                }
+//            if (Xcod < 100 && getX() >= 600) {//maak een keerpunt op 70 procent van de afgelegde weg
+//                if (/*randomYcod > 300 && */!turningPoint) {
+//                    setDirection(45);
+//                    turningPoint = true;//zorg dat het keerpunt is geactiveerd en niet meer gebruikt kan worden
+//                }
+//                if (randomYcod > 300 && getX() >= 750 && turningPoint) {
+//                    setDirection(300);
+//                    turningPoint = false;
+//                } else {
+//                    setDirection(270);
+//                }
+//            }
+            if (Xcod < 100 && getX() >= 900 && !turningPoint) {//maak een keerpunt op 70 procent van de afgelegde weg
+                setDirection(dir);
+                turningPoint = true;//zorg dat het keerpunt is geactiveerd en niet meer gebruikt kan worden
             }
-//            if (Xcod < 100 && getX() >= 900 && !turningPoint) {//maak een keerpunt op 70 procent van de afgelegde weg
-//                setDirection(dir);
-//                turningPoint = true;//zorg dat het keerpunt is geactiveerd en niet meer gebruikt kan worden
-//            }
-//            if (Xcod > 100 && getX() <= 300 && !turningPoint) {
-//                setDirection(dir);
-//                turningPoint = true;//zorg dat het keerpunt is geactiveerd en niet meer gebruikt kan worden
-//            }
+            if (Xcod > 100 && getX() <= 300 && !turningPoint) {
+                setDirection(dir);
+                turningPoint = true;//zorg dat het keerpunt is geactiveerd en niet meer gebruikt kan worden
+            }
+
         } else {
-            if (getX() <= hitX - 20) {
-                System.out.println("1");
-                setDirection(125);
-            }
-            if (getX() >= hitX + 20) {
-                System.out.println("2");
-                setDirection(225);
-            }
+            setySpeed(15);
         }
     }
 }
+
 

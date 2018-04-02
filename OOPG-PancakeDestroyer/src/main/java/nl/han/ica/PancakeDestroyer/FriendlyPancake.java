@@ -4,14 +4,14 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.SpriteObject;
 
 
-public class TestPancake extends Pancake {
+public class FriendlyPancake extends Pancake {
 
     private int points = 10;
     private boolean hit = false;
     private float hitX = 0;
     private boolean left = true;
 
-    public TestPancake(PancakeDestroyer world) {
+    public FriendlyPancake(PancakeDestroyer world) {
         super(new Sprite("src/main/java/nl/han/ica/PancakeDestroyer/media/EvilPancake.png"), world);
         setxSpeed(5);
         setX(10);
@@ -53,13 +53,13 @@ public class TestPancake extends Pancake {
     }
 
     public int getHit() {
-       if (hit == false) {
-           setDirection(225);
-           hit = true;
-           hitX = getX();
-           return points;
-       } else {
-           return 0;
-       }
+        if (hit == false) {
+            setDirection(225);
+            hit = true;
+            hitX = getX();
+            return points;
+        } else {
+            return 0;
+        }
     }
 }
