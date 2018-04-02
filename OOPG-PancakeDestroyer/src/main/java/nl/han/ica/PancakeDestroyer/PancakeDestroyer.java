@@ -58,7 +58,7 @@ public class PancakeDestroyer extends GameEngine {
 
     private void spawnPancakes() {
         Random random = new Random();
-        int type = random.nextInt(2);
+        int type = random.nextInt(3);
         if (pancakes.size() < 5) {
             if (type == 0) {
                 Pancake pancake = new FriendlyPancake(this);
@@ -66,6 +66,10 @@ public class PancakeDestroyer extends GameEngine {
                 addGameObject(pancake, 1);
             } else if (type == 1) {
                 Pancake pancake = new NormalEnemy(this);
+                pancakes.add(pancake);
+                addGameObject(pancake, 1);
+            } else if (type == 2) {
+                Pancake pancake = new FastEnemyPancake(this);
                 pancakes.add(pancake);
                 addGameObject(pancake, 1);
             }

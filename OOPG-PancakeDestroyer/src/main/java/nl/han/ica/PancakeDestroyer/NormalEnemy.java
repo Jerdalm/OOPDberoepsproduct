@@ -53,11 +53,11 @@ public class NormalEnemy extends Pancake {
 //                    setDirection(270);
 //                }
 //            }
-            if (Xcod < world.getWorldWidth() / 2 && getX() >= 900 && !turningPoint) {//maak een keerpunt op 70 procent van de afgelegde weg
+            if (Xcod < world.getWorldWidth() / 2 && getX() >= world.getWorldWidth() / 4 * 3 - 100 && !turningPoint) {//maak een keerpunt op 70 procent van de afgelegde weg
                 setDirection(dir);
                 turningPoint = true;//zorg dat het keerpunt is geactiveerd en niet meer gebruikt kan worden
             }
-            if (Xcod > world.getWorldWidth() / 2 && getX() <= 300 && !turningPoint) {
+            if (Xcod > world.getWorldWidth() / 2 && getX() <= world.getWorldWidth() / 4 - 100 && !turningPoint) {
                 setDirection(dir);
                 turningPoint = true;//zorg dat het keerpunt is geactiveerd en niet meer gebruikt kan worden
             }
