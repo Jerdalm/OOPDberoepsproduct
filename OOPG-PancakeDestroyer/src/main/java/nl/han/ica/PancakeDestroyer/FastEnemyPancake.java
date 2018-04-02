@@ -7,7 +7,7 @@ public class FastEnemyPancake extends Pancake {
     private int points = 10;
 
     public FastEnemyPancake(PancakeDestroyer world) {
-        super(new Sprite("src/main/java/nl/han/ica/PancakeDestroyer/media/original.png"), world);
+        super(new Sprite("src/main/java/nl/han/ica/PancakeDestroyer/media/Fastpancake.png"), world);
 
         setxSpeed(15);
         setY(Ycod);
