@@ -7,54 +7,29 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.SpriteObject;
 public class FriendlyPancake extends Pancake {
 
     private int points = 10;
-    private boolean hit = false;
-    private float hitX = 0;
-    private boolean left = true;
+    private boolean down;
 
     public FriendlyPancake(PancakeDestroyer world) {
         super(new Sprite("src/main/java/nl/han/ica/PancakeDestroyer/media/EvilPancake.png"), world);
-        setxSpeed(5);
-        setX(10);
-        setY(0);
-    }
 
+        setySpeed(10);
+        setX(Xcod);
 
-    @Override
-    public void update() {
-        if (hit == false) {
-            if (getX() + getWidth() <= 0) {
-                setX(world.getWidth());
-            }
-            if (getY() + getHeight() <= 0) {
-                setY(world.getHeight());
-            }
-            if (getX() - getWidth() >= world.getWidth()) {
-                setX(0);
-            }
-            if (getY() - getHeight() >= world.getHeight()) {
-                setY(0);
-            }
-            if (getX() > 800 && getY() + getHeight() < 550) {
-                setDirection(225);
-            }
-            if (getX() + getWidth() < 500) {
-                setDirection(91);
-            }
+        if (Ycod < world.getWorldHeight() / 2 - 100) {//initialiseer beginpunt
+            setY(-getHeight());
+            setDirection(125);
+            down = true;
         } else {
-            if (getX() <= hitX - 20) {
-                System.out.println("1");
-                setDirection(125);
-            }
-            if (getX() >= hitX + 20) {
-                System.out.println("2");
-                setDirection(225);
-            }
+            setY(world.getHeight() + getHeight());
+            setDirection(305);
+            down = false;
         }
     }
 
     public int getHit() {
         if (hit == false) {
-            setDirection(225);
+            setDirection(180);
+            setySpeed(15);
             hit = true;
             hitX = getX();
             return points;
@@ -62,4 +37,25 @@ public class FriendlyPancake extends Pancake {
             return 0;
         }
     }
+
+
+    @Override
+    public void update() {
+        if (down) {
+            if (getX() <= Xcod - 20) {
+                setDirection(125);
+            }
+            if (getX() >= Xcod + 20) {
+                setDirection(225);
+            }
+        } else {
+            if (getX() <= Xcod - 20) {
+                setDirection(25);
+            }
+            if (getX() >= Xcod + 20) {
+                setDirection(305);
+            }
+        }
+    }
 }
+
