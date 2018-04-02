@@ -31,7 +31,7 @@ public class UltimateEnemy extends Pancake {
                 }
 
             if (Xcod > 100) {//maak een keerpunt op 70 procent van de afgelegde weg
-                if (getX() <= ((getWidth()/2)-200)) && getX() >= (getWidth()/2)) {
+                if (getX() <= getWidth()/2-200 && getX() >= getWidth()/2) {
                     setDirection(45);
                 } if (getX() >= 700) {
                     setDirection(300);
