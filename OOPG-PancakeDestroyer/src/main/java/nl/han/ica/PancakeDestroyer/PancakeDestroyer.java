@@ -9,6 +9,7 @@ import nl.han.ica.waterworld.TextObject;
 import processing.core.PApplet;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class PancakeDestroyer extends GameEngine {
 
@@ -44,9 +45,9 @@ public class PancakeDestroyer extends GameEngine {
 
     private void deletePancakes() {
         //TODO het verwijderen van de pancake uit gameObjects
-        for (int i = 0; i < pancakes.size(); i ++) {
-            if (pancakes.get(i).getX() > worldWidth + 200 || pancakes.get(i) .getX() < -200 ||
-                    pancakes.get(i) .getY() > worldHeight + 200 || pancakes.get(i) .getY() < -200) {
+        for (int i = 0; i < pancakes.size(); i++) {
+            if (pancakes.get(i).getX() > worldWidth + 200 || pancakes.get(i).getX() < -200 ||
+                    pancakes.get(i).getY() > worldHeight + 200 || pancakes.get(i).getY() < -200) {
                 pancakes.remove(i);
             }
         }
@@ -54,12 +55,18 @@ public class PancakeDestroyer extends GameEngine {
     }
 
     private void spawnPancakes() {
-        System.out.println(1);
+        Random random = new Random();
+        int type = random.nextInt(2);
         if (pancakes.size() < 5) {
-            Pancake pancake = new FriendlyPancake(this);
-            System.out.println(2);
-            pancakes.add(pancake);
-            addGameObject(pancake, 1);
+            if (type == 0) {
+                Pancake pancake = new FriendlyPancake(this);
+                pancakes.add(pancake);
+                addGameObject(pancake, 1);
+            } else if (type == 1) {
+                Pancake pancake = new NormalEnemy(this);
+                pancakes.add(pancake);
+                addGameObject(pancake, 1);
+            }
         }
     }
 
@@ -99,17 +106,21 @@ public class PancakeDestroyer extends GameEngine {
     }
 
     public void mousePressed() {
+        int totalPoints = 0;
         for (Pancake pancake : pancakes) {
             if (pancake.mouseOverPancake()) {
                 int plusPoints = pancake.getHit();
-                if (plusPoints > 0) {
+                if (plusPoints > -900) {
                     player.setHits(player.getHits() + 1);
                     points = points + plusPoints;
+                } else {
+                    totalPoints = totalPoints + plusPoints;
                 }
             }
         }
-
-
+        if (totalPoints < 10000) {
+            player.setBricks(player.getBricks() - 1);
+        }
     }
 
     public int getWorldWidth() {

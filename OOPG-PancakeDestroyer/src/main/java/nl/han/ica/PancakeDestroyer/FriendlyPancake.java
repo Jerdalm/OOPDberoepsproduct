@@ -6,11 +6,11 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.SpriteObject;
 
 public class FriendlyPancake extends Pancake {
 
-    private int points = 10;
+    private int points = -5;
     private boolean down;
 
     public FriendlyPancake(PancakeDestroyer world) {
-        super(new Sprite("src/main/java/nl/han/ica/PancakeDestroyer/media/EvilPancake.png"), world);
+        super(new Sprite("src/main/java/nl/han/ica/PancakeDestroyer/media/original.png"), world);
 
         setySpeed(10);
         setX(Xcod);
@@ -34,7 +34,7 @@ public class FriendlyPancake extends Pancake {
             hitX = getX();
             return points;
         } else {
-            return 0;
+            return -1000000;
         }
     }
 
