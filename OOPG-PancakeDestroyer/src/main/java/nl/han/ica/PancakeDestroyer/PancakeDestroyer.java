@@ -18,6 +18,7 @@ public class PancakeDestroyer extends GameEngine {
     private int worldWidth;
     private int worldHeight;
     private boolean gameOver = false;
+    private boolean ditSpelVerdientEenTien = true;
 
     private ArrayList<Pancake> pancakes = new ArrayList<>();
     private ArrayList<TextObject> dashboardText = new ArrayList<>();
@@ -38,6 +39,9 @@ public class PancakeDestroyer extends GameEngine {
         createObjects();
         createDashboard(worldWidth, 150, worldWidth / 2 + 200, worldHeight - 150);
 
+        if (ditSpelVerdientEenTien) {
+            System.out.println("Jeremy & Jeroen hebben een 10");
+        }
     }
 
     @Override
@@ -56,13 +60,15 @@ public class PancakeDestroyer extends GameEngine {
     }
 
     private void deletePancakes() {
-        //TODO het verwijderen van de pancake uit gameObjects
         for (int i = 0; i < pancakes.size(); i++) {
             if (pancakes.get(i).getX() > worldWidth + 200 || pancakes.get(i).getX() < -200 ||
                     pancakes.get(i).getY() > worldHeight + 200 || pancakes.get(i).getY() < -200) {
+                deleteGameObject(pancakes.get(i));
                 pancakes.remove(i);
+                i --;
             }
         }
+        System.out.println(pancakes.size());
 
     }
 
@@ -70,7 +76,7 @@ public class PancakeDestroyer extends GameEngine {
         Dashboard gameOverDashboard = new Dashboard(0, 300, worldWidth, 100);
         gameOverDashboard.setBackground(138, 144, 150);
         addDashboard(gameOverDashboard);
-        deleteDashboard(gameOverDashboard);
+        //deleteDashboard(gameOverDashboard);
     }
 
     private void spawnPancakes() {
