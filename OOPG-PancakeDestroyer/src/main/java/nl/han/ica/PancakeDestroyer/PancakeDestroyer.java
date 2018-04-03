@@ -1,5 +1,7 @@
 package nl.han.ica.PancakeDestroyer;
 
+import nl.han.ica.OOPDProcessingEngineHAN.Alarm.Alarm;
+import nl.han.ica.OOPDProcessingEngineHAN.Alarm.IAlarmListener;
 import nl.han.ica.OOPDProcessingEngineHAN.Dashboard.Dashboard;
 import nl.han.ica.OOPDProcessingEngineHAN.Engine.GameEngine;
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
@@ -14,16 +16,19 @@ import java.util.ArrayList;
 import java.util.Random;
 
 
-public class PancakeDestroyer extends GameEngine {
+public class PancakeDestroyer extends GameEngine implements IAlarmListener {
 
     private int worldWidth;
     private int worldHeight;
+    private final int gameTime = 10;
     private boolean gameOver = false;
     private boolean ditSpelVerdientEenTien = true;
 
     private ArrayList<Pancake> pancakes = new ArrayList<>();
     private ArrayList<TextObject> dashboardText = new ArrayList<>();
 
+    Dashboard gameOverDashboard;
+    Alarm endOfGame;
     private Player player;
 
     public static void main(String[] args) {
@@ -35,10 +40,12 @@ public class PancakeDestroyer extends GameEngine {
         worldWidth = 1280;
         worldHeight = 800;
         noCursor();
+        startAlarm();
 
         createView(worldWidth, worldHeight, 255, 0, 255);
         createObjects();
-        createDashboard(worldWidth, 150, worldWidth / 2 + 200, worldHeight - 150);
+        createDashboard(worldWidth, 150, worldWidth / 2 + 200, worldHeight - 150, 5);
+        //createDashboard(worldWidth, 100, 0, worldHeight / 2 - 50, 1);
 
         if (ditSpelVerdientEenTien) {
             System.out.println("Jeremy & Jeroen hebben een 10");
@@ -74,10 +81,7 @@ public class PancakeDestroyer extends GameEngine {
     }
 
     private void gameOver() {
-        Dashboard gameOverDashboard = new Dashboard(0, 300, worldWidth, 100);
-        gameOverDashboard.setBackground(138, 144, 150);
-        addDashboard(gameOverDashboard);
-        //deleteDashboard(gameOverDashboard);
+        System.out.println("GameOVer");
     }
 
     private void spawnPancakes() {
@@ -103,8 +107,8 @@ public class PancakeDestroyer extends GameEngine {
     private void createView(int worldWidth, int worldHeight, int r, int g, int b) {
         PApplet image = new PApplet();
         View view = new View(worldWidth, worldHeight);
-        view.setBackground(r, g, b);
-        //view.setBackground(image.loadImage("src/main/java/nl/han/ica/PancakeDestroyer/media/Background.jpg"));
+        //view.setBackground(r, g, b);
+        view.setBackground(image.loadImage("src/main/java/nl/han/ica/PancakeDestroyer/media/Background.png"));
 
         setView(view);
         size(worldWidth, worldHeight);
@@ -116,21 +120,23 @@ public class PancakeDestroyer extends GameEngine {
     }
 
     private void updateDashboard() {
+        int thisMillis = millis() / 1000;
         dashboardText.get(0).setText("Bricks: " + player.getBricks());
         dashboardText.get(1).setText("Trown Bricks: " + player.getTrownBricks());
         dashboardText.get(2).setText("Points: " + player.getPoints());
         dashboardText.get(3).setText("Pancakes Hit: " + player.getHits());
+        dashboardText.get(4).setText("Time Left: " + (gameTime - thisMillis));
     }
 
-    private void createDashboard(int dashboardWidth, int dashboardHeight, int x, int y) {
+    private void createDashboard(int dashboardWidth, int dashboardHeight, int x, int y, int nText) {
         Dashboard dashboard = new Dashboard(x, y, dashboardWidth, dashboardHeight);
         dashboard.setBackground(138, 144, 150);
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < nText; i++) {
             int yNew = -i * 30 + y;
             dashboardText.add(new TextObject(""));
             dashboardText.get(i).setX(-x + 5);
             dashboardText.get(i).setY(-yNew);
-            dashboard.addGameObject(dashboardText.get(i));
+            dashboard.addGameObject(dashboardText.get(i ));
         }
         addDashboard(dashboard, 1);
     }
@@ -157,6 +163,17 @@ public class PancakeDestroyer extends GameEngine {
 
     public int getWorldHeight() {
         return worldHeight;
+    }
+
+    private void startAlarm() {
+        endOfGame = new Alarm("GameOver", 10);
+        endOfGame.addTarget(this);
+        endOfGame.start();
+    }
+
+    @Override
+    public void triggerAlarm(String alarmName) {
+        gameOver = true;
     }
 }
 
