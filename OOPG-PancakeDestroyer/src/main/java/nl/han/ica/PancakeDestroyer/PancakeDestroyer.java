@@ -1,13 +1,14 @@
 package nl.han.ica.PancakeDestroyer;
 
-import javafx.scene.Cursor;
 import nl.han.ica.OOPDProcessingEngineHAN.Dashboard.Dashboard;
 import nl.han.ica.OOPDProcessingEngineHAN.Engine.GameEngine;
-import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
+import nl.han.ica.PancakeDestroyer.Pancakes.FastEnemyPancake;
+import nl.han.ica.PancakeDestroyer.Pancakes.FriendlyPancake;
+import nl.han.ica.PancakeDestroyer.Pancakes.NormalEnemy;
+import nl.han.ica.PancakeDestroyer.Pancakes.Pancake;
 import nl.han.ica.waterworld.TextObject;
 import processing.core.PApplet;
-import processing.core.PImage;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -29,7 +30,7 @@ public class PancakeDestroyer extends GameEngine {
 
     @Override
     public void setupGame() {
-        worldWidth = 1200;
+        worldWidth = 1280;
         worldHeight = 800;
         noCursor();
 
@@ -66,9 +67,10 @@ public class PancakeDestroyer extends GameEngine {
     }
 
     private void gameOver() {
-        Dashboard gameOver = new Dashboard(0, 300, worldWidth, 100);
-        gameOver.setBackground(138, 144, 150);
-        addDashboard(gameOver);
+        Dashboard gameOverDashboard = new Dashboard(0, 300, worldWidth, 100);
+        gameOverDashboard.setBackground(138, 144, 150);
+        addDashboard(gameOverDashboard);
+        deleteDashboard(gameOverDashboard);
     }
 
     private void spawnPancakes() {
@@ -94,8 +96,8 @@ public class PancakeDestroyer extends GameEngine {
     private void createView(int worldWidth, int worldHeight, int r, int g, int b) {
         PApplet image = new PApplet();
         View view = new View(worldWidth, worldHeight);
-        //view.setBackground(r, g, b);
-        view.setBackground(image.loadImage("src/main/java/nl/han/ica/PancakeDestroyer/media/Background.jpg"));
+        view.setBackground(r, g, b);
+        //view.setBackground(image.loadImage("src/main/java/nl/han/ica/PancakeDestroyer/media/Background.jpg"));
 
         setView(view);
         size(worldWidth, worldHeight);

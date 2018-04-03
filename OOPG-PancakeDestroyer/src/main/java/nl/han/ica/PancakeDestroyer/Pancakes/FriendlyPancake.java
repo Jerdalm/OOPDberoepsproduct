@@ -1,7 +1,7 @@
-package nl.han.ica.PancakeDestroyer;
+package nl.han.ica.PancakeDestroyer.Pancakes;
 
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
-import nl.han.ica.OOPDProcessingEngineHAN.Objects.SpriteObject;
+import nl.han.ica.PancakeDestroyer.PancakeDestroyer;
 
 
 public class FriendlyPancake extends Pancake {
