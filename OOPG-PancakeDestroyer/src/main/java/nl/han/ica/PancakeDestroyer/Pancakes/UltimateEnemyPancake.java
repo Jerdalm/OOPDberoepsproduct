@@ -6,7 +6,7 @@ import nl.han.ica.PancakeDestroyer.PancakeDestroyer;
 public class UltimateEnemyPancake extends Pancake {
 
     public UltimateEnemyPancake(PancakeDestroyer world) {
-        super(new Sprite("src/main/java/nl/han/ica/PancakeDestroyer/media/EvilPancake.png"), world);
+        super(new Sprite("src/main/java/nl/han/ica/PancakeDestroyer/media/newcrosshair.png"), world);
 
         if (Xcod < 100) {//initialiseer beginpunt
             setX(-getWidth());
@@ -20,21 +20,21 @@ public class UltimateEnemyPancake extends Pancake {
         public void update () {
             if (hit == false) {
                 if (Xcod < world.getWorldWidth() / 2 - 100) {//maak een keerpunt op 70 procent van de afgelegde weg
-                    if (getX() <= getWidth() / 2 + 200 && getX() >= getWidth() / 2 && !turningPoint){
+                    if (getX() <= getWidth() / 2 + 100 && getX() >= getWidth() / 2 && !turningPoint){
                         setDirection(45);
                         turningPoint = true;
                     }
-                    if (getX() >= getWidth() / 2 +200){
-                        setDirection(300);
+                    if (getX() >= getWidth() / 2 + 100){
+                        setDirection(315);
                     } else{
                         setDirection(270);
                     }
                 } else {//maak een keerpunt op 70 procent van de afgelegde weg
-                    if (getX() >= getWidth() / 2 - 200 && getX() <= getWidth() / 2 && !turningPoint) {
-                        setDirection(300);
+                    if (getX() >= getWidth() / 2 - 100 && getX() <= getWidth() / 2 && !turningPoint) {
+                        setDirection(315);
                         turningPoint = true;
                     }
-                    if (getX() <= getWidth() / 2 - 200) {
+                    if (getX() <= getWidth() / 2 - 100) {
                         setDirection(45);
                     } else {
                         setDirection(270);
