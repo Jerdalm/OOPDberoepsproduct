@@ -5,10 +5,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.Alarm.IAlarmListener;
 import nl.han.ica.OOPDProcessingEngineHAN.Dashboard.Dashboard;
 import nl.han.ica.OOPDProcessingEngineHAN.Engine.GameEngine;
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
-import nl.han.ica.PancakeDestroyer.Pancakes.FastEnemyPancake;
-import nl.han.ica.PancakeDestroyer.Pancakes.FriendlyPancake;
-import nl.han.ica.PancakeDestroyer.Pancakes.NormalEnemy;
-import nl.han.ica.PancakeDestroyer.Pancakes.Pancake;
+import nl.han.ica.PancakeDestroyer.Pancakes.*;
 import nl.han.ica.waterworld.TextObject;
 import processing.core.PApplet;
 
@@ -86,7 +83,7 @@ public class PancakeDestroyer extends GameEngine implements IAlarmListener {
 
     private void spawnPancakes() {
         Random random = new Random();
-        int type = random.nextInt(3);
+        int type = random.nextInt(4);
         if (pancakes.size() < 5) {
             if (type == 0) {
                 Pancake pancake = new FriendlyPancake(this);
@@ -100,6 +97,10 @@ public class PancakeDestroyer extends GameEngine implements IAlarmListener {
                 Pancake pancake = new FastEnemyPancake(this);
                 pancakes.add(pancake);
                 addGameObject(pancake, 1);
+            } else if (type == 3) {
+                Pancake pancake = new UltimateEnemyPancake(this);
+                pancakes.add(pancake);
+                addGameObject(pancake);
             }
         }
     }
@@ -141,21 +142,21 @@ public class PancakeDestroyer extends GameEngine implements IAlarmListener {
         addDashboard(dashboard, 1);
     }
 
-    public void mousePressed() {
-        player.setBricks(player.getBricks() - 1);
-        int points = player.getPoints();
-        for (Pancake pancake : pancakes) {
-            if (pancake.mouseOverPancake()) {
-                int plusPoints = pancake.getHit();
-                if (plusPoints > -900) {
-                    player.setHits(player.getHits() + 1);
-                    points = points + plusPoints;
-                } else {
-                }
-            }
-        }
-        player.setPoints(points);
-    }
+//    public void mousePressed() {
+//        player.setBricks(player.getBricks() - 1);
+//        int points = player.getPoints();
+//        for (Pancake pancake : pancakes) {
+//            if (pancake.mouseOverPancake()) {
+//                int plusPoints = pancake.getHit();
+//                if (plusPoints > -900) {
+//                    player.setHits(player.getHits() + 1);
+//                    points = points + plusPoints;
+//                } else {
+//                }
+//            }
+//        }
+//        player.setPoints(points);
+//    }
 
     public int getWorldWidth() {
         return worldWidth;
