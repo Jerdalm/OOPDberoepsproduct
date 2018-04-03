@@ -17,7 +17,7 @@ public class PancakeDestroyer extends GameEngine implements IAlarmListener {
 
     private int worldWidth;
     private int worldHeight;
-    private final int gameTime = 120;
+    private final int gameTime = 10;
     private boolean gameOver = false;
     private boolean ditSpelVerdientEenTien = true;
 
@@ -37,7 +37,7 @@ public class PancakeDestroyer extends GameEngine implements IAlarmListener {
         worldWidth = 1280;
         worldHeight = 800;
         noCursor();
-        //startAlarm();
+        startAlarm();
 
         createView(worldWidth, worldHeight, 255, 0, 255);
         createObjects();
@@ -71,10 +71,10 @@ public class PancakeDestroyer extends GameEngine implements IAlarmListener {
                 deleteGameObject(pancakes.get(i));
                 pancakes.remove(i);
                 i --;
-                System.out.println("delete");
-                System.out.println(pancakes.size());
             }
         }
+        System.out.println(pancakes.size());
+
     }
 
     private void gameOver() {
@@ -84,9 +84,7 @@ public class PancakeDestroyer extends GameEngine implements IAlarmListener {
     private void spawnPancakes() {
         Random random = new Random();
         int type = random.nextInt(4);
-        //System.out.println("type: " + type);
         if (pancakes.size() < 5) {
-            //System.out.println("create");
             if (type == 0) {
                 Pancake pancake = new FriendlyPancake(this);
                 pancakes.add(pancake);
@@ -102,7 +100,7 @@ public class PancakeDestroyer extends GameEngine implements IAlarmListener {
             } else if (type == 3) {
                 Pancake pancake = new UltimateEnemyPancake(this);
                 pancakes.add(pancake);
-                addGameObject(pancake, 1);
+                addGameObject(pancake);
             }
         }
     }
@@ -144,21 +142,21 @@ public class PancakeDestroyer extends GameEngine implements IAlarmListener {
         addDashboard(dashboard, 1);
     }
 
-    public void mousePressed() {
-        player.setBricks(player.getBricks() - 1);
-        int points = player.getPoints();
-        for (Pancake pancake : pancakes) {
-            if (pancake.mouseOverPancake()) {
-                int plusPoints = pancake.getHit();
-                if (plusPoints > -900) {
-                    player.setHits(player.getHits() + 1);
-                    points = points + plusPoints;
-                } else {
-                }
-            }
-        }
-        player.setPoints(points);
-    }
+//    public void mousePressed() {
+//        player.setBricks(player.getBricks() - 1);
+//        int points = player.getPoints();
+//        for (Pancake pancake : pancakes) {
+//            if (pancake.mouseOverPancake()) {
+//                int plusPoints = pancake.getHit();
+//                if (plusPoints > -900) {
+//                    player.setHits(player.getHits() + 1);
+//                    points = points + plusPoints;
+//                } else {
+//                }
+//            }
+//        }
+//        player.setPoints(points);
+//    }
 
     public int getWorldWidth() {
         return worldWidth;
@@ -169,7 +167,7 @@ public class PancakeDestroyer extends GameEngine implements IAlarmListener {
     }
 
     private void startAlarm() {
-        endOfGame = new Alarm("GameOver", gameTime);
+        endOfGame = new Alarm("GameOver", 10);
         endOfGame.addTarget(this);
         endOfGame.start();
     }
