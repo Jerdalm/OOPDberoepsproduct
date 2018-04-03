@@ -31,11 +31,11 @@ public class UltimateEnemyPancake extends Pancake {
                     }
                 } else {//maak een keerpunt op 70 procent van de afgelegde weg
                     if (getX() >= getWidth() / 2 - 200 && getX() <= getWidth() / 2 && !turningPoint) {
-                        setDirection(45);
+                        setDirection(300);
                         turningPoint = true;
                     }
-                    if (getX() >= getWidth() / 2 + 200) {
-                        setDirection(300);
+                    if (getX() <= getWidth() / 2 - 200) {
+                        setDirection(45);
                     } else {
                         setDirection(270);
                     }
