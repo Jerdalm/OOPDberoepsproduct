@@ -8,6 +8,9 @@ public class UltimateEnemyPancake extends Pancake {
     public UltimateEnemyPancake(PancakeDestroyer world) {
         super(new Sprite("src/main/java/nl/han/ica/PancakeDestroyer/media/newcrosshair.png"), world);
 
+        setY(Ycod);
+        setSpeed(5);
+
         if (Xcod < 100) {//initialiseer beginpunt
             setX(-getWidth());
             setDirection(90);
