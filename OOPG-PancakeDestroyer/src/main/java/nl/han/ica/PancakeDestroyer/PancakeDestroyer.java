@@ -17,7 +17,7 @@ public class PancakeDestroyer extends GameEngine implements IAlarmListener {
 
     private int worldWidth;
     private int worldHeight;
-    private final int gameTime = 10;
+    private final int gameTime = 120;
     private boolean gameOver = false;
     private boolean ditSpelVerdientEenTien = true;
 
@@ -167,7 +167,7 @@ public class PancakeDestroyer extends GameEngine implements IAlarmListener {
     }
 
     private void startAlarm() {
-        endOfGame = new Alarm("GameOver", 10);
+        endOfGame = new Alarm("GameOver", gameTime);
         endOfGame.addTarget(this);
         endOfGame.start();
     }
