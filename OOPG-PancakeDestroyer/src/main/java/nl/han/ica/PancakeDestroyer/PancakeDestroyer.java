@@ -17,9 +17,11 @@ public class PancakeDestroyer extends GameEngine implements IAlarmListener {
     private int worldHeight;
     private final int gameTime = 120;
     private boolean gameOver = false;
+    private boolean firstTimeGameOver = true;
     private boolean ditSpelVerdientEenTien = true;
 
     private ArrayList<TextObject> dashboardText = new ArrayList<>();
+    private TextObject gameOverText = new TextObject("GAME OVER");
 
     private PancakeSpawner spawner;
     private Alarm endOfGame;
@@ -54,12 +56,19 @@ public class PancakeDestroyer extends GameEngine implements IAlarmListener {
             if (player.getBricks() == 0) {
                 gameOver = true;
             }
-        } else {
+        } else if (firstTimeGameOver){
             gameOver();
+            firstTimeGameOver = false;
         }
     }
 
     private void gameOver() {
+        Dashboard gameOver = new Dashboard(0, worldHeight / 2 - 50, worldWidth, 100);
+        gameOver.setBackground(138, 144, 150);
+        gameOverText.setY(- (worldHeight / 2 - 75));
+        gameOverText.setX(worldWidth / 2 - 100);
+        gameOver.addGameObject(gameOverText);
+        addDashboard(gameOver,1);
         System.out.println("GameOVer");
     }
 
