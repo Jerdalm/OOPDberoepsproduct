@@ -24,7 +24,6 @@ public class PancakeDestroyer extends GameEngine implements IAlarmListener {
     private ArrayList<Pancake> pancakes = new ArrayList<>();
     private ArrayList<TextObject> dashboardText = new ArrayList<>();
 
-    Dashboard gameOverDashboard;
     Alarm endOfGame;
     private Player player;
 
@@ -42,7 +41,6 @@ public class PancakeDestroyer extends GameEngine implements IAlarmListener {
         createView(worldWidth, worldHeight, 255, 0, 255);
         createObjects();
         createDashboard(worldWidth, 150, worldWidth / 2 + 200, worldHeight - 150, 5);
-        //createDashboard(worldWidth, 100, 0, worldHeight / 2 - 50, 1);
 
         if (ditSpelVerdientEenTien) {
             System.out.println("Jeremy & Jeroen hebben een 10");
@@ -63,6 +61,7 @@ public class PancakeDestroyer extends GameEngine implements IAlarmListener {
             gameOver();
         }
     }
+
 
     private void deletePancakes() {
         for (int i = 0; i < pancakes.size(); i++) {
@@ -108,7 +107,6 @@ public class PancakeDestroyer extends GameEngine implements IAlarmListener {
     private void createView(int worldWidth, int worldHeight, int r, int g, int b) {
         PApplet image = new PApplet();
         View view = new View(worldWidth, worldHeight);
-        //view.setBackground(r, g, b);
         view.setBackground(image.loadImage("src/main/java/nl/han/ica/PancakeDestroyer/media/Background.png"));
 
         setView(view);
