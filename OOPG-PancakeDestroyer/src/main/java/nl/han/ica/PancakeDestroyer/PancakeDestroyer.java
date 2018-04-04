@@ -62,6 +62,7 @@ public class PancakeDestroyer extends GameEngine implements IAlarmListener {
         }
     }
 
+
     private void deletePancakes() {
         for (int i = 0; i < pancakes.size(); i++) {
             if (pancakes.get(i).getX() > worldWidth + 200 || pancakes.get(i).getX() < -200 ||
