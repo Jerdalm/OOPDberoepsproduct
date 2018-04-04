@@ -6,6 +6,9 @@ import nl.han.ica.PancakeDestroyer.PancakeDestroyer;
 
 import java.util.Random;
 
+/**
+ * de abstracte classs Pancake die alle anders dubble code voor de verschillende pancakes bevat
+ */
 public abstract class Pancake extends SpriteObject {
 
     protected PancakeDestroyer world;
@@ -22,6 +25,10 @@ public abstract class Pancake extends SpriteObject {
     protected float hitX = 0;
     protected int points;
 
+    /**constructor
+     * @param sprite de sprite die aan de Pancake gekoppeld moet worden
+     * @param world de wereld waarin de Pancake gespawned moet worden
+     */
     public Pancake(Sprite sprite, PancakeDestroyer world) {
         super(sprite);
         this.world = world;
@@ -36,6 +43,10 @@ public abstract class Pancake extends SpriteObject {
 
     }
 
+    /**
+     * @return returned het aantal punten dat de geraakte pannenkoek waard is. als de pannenkoek al geraakt is
+     * word er -1000000 geretruned. bij het uitlezen van de gethit() wordt de hit dan genegeerd.
+     */
     public int getHit() {
         if (hit == false) {
             setDirection(180);
@@ -47,6 +58,9 @@ public abstract class Pancake extends SpriteObject {
         }
     }
 
+    /**
+     * @return deze methode returned true als de muis over de pannenkoek zweeft.
+     */
     public boolean mouseOverPancake() {
         if (world.mouseX > getX() && world.mouseX < (getX() + getWidth()) && world.mouseY > getY()
                 && world.mouseY < (getY() + getHeight())) {

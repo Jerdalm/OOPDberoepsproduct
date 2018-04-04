@@ -8,7 +8,7 @@ import nl.han.ica.PancakeDestroyer.PancakeDestroyer;
  */
 public class FastEnemyPancake extends Pancake {
 
-    /**
+    /**constructor
      * @param world is de wereld waarin de NormalEnemy Spawned
      */
     public FastEnemyPancake(PancakeDestroyer world) {

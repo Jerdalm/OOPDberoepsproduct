@@ -1,6 +1,7 @@
 package nl.han.ica.PancakeDestroyer;
 
 import nl.han.ica.PancakeDestroyer.Pancakes.*;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -53,7 +54,7 @@ public class PancakeSpawner {
                     pancakes.get(i).getY() > world.getWorldHeight() + 200 || pancakes.get(i).getY() < -200) {
                 world.deleteGameObject(pancakes.get(i));
                 pancakes.remove(i);
-                i --;
+                i--;
             }
         }
     }
