@@ -20,7 +20,7 @@ public class PancakeSpawner {
 
     private void spawnPancakes() {
         Random random = new Random();
-        int type = random.nextInt(4);
+        int type = random.nextInt(5);
         if (pancakes.size() < 5) {
             if (type == 0) {
                 Pancake pancake = new FriendlyPancake(world);
@@ -36,6 +36,10 @@ public class PancakeSpawner {
                 world.addGameObject(pancake, 1);
             } else if (type == 3) {
                 Pancake pancake = new UltimateEnemyPancake(world);
+                pancakes.add(pancake);
+                world.addGameObject(pancake);
+            } else if (type == 4) {
+                Pancake pancake = new ConfusedPancake(world);
                 pancakes.add(pancake);
                 world.addGameObject(pancake);
             }
