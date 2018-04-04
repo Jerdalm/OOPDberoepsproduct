@@ -3,8 +3,14 @@ package nl.han.ica.PancakeDestroyer.Pancakes;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.PancakeDestroyer.PancakeDestroyer;
 
+/**
+ * UltimateEnemyPancake levert veel punten op.
+ */
 public class UltimateEnemyPancake extends Pancake {
 
+    /**
+     * @param world de wereld waarin de pancake spawned
+     */
     public UltimateEnemyPancake(PancakeDestroyer world) {
         super(new Sprite("src/main/java/nl/han/ica/PancakeDestroyer/media/UltimatePancake.png"), world);
         points = 10;
