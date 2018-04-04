@@ -7,12 +7,12 @@ public class ConfusedPancake extends Pancake {
 
     private boolean down;
     private boolean left;
+    private int zigzagDistance = 50;
 
     public ConfusedPancake(PancakeDestroyer world) {
         super(new Sprite("src/main/java/nl/han/ica/PancakeDestroyer/media/ConfusedPancake.png"), world);
         points = 5;
         setxSpeed(10);
-
 
         if (dir < 90) {//Pannekoek komt van rechts
             setX(-getWidth());
@@ -44,36 +44,35 @@ public class ConfusedPancake extends Pancake {
     public void update() {
         if (hit == false) {
             if (down) {
-                if (getX() <= Xcod - 50) {
+                if (getX() <= Xcod - zigzagDistance) {
                     setDirection(125);
                 }
-                if (getX() >= Xcod + 50) {
+                if (getX() >= Xcod + zigzagDistance) {
                     setDirection(225);
                 }
             } if(!down) {
-                if (getX() <= Xcod - 50) {
+                if (getX() <= Xcod - zigzagDistance) {
                     setDirection(35);
                 }
-                if (getX() >= Xcod + 50) {
+                if (getX() >= Xcod + zigzagDistance) {
                     setDirection(305);
                 }
             }
             if (left) {
-                if (getY() <= Ycod - 50) {
-                    setDirection(125);
-                }
-                if (getY() >= Ycod + 50) {
-                    setDirection(225);
-                }
-            } if (!left){
-                if (getY() <= Ycod - 50) {
-                    setDirection(25);
-                }
-                if (getY() >= Ycod + 50) {
+                if (getY() <= Ycod - zigzagDistance) {
                     setDirection(305);
                 }
+                if (getY() >= Ycod + zigzagDistance) {
+                    setDirection(215);
+                }
+            } if (!left){
+                if (getY() <= Ycod - zigzagDistance) {
+                    setDirection(125);
+                }
+                if (getY() >= Ycod + zigzagDistance) {
+                    setDirection(35);
+                }
             }
-
         } else {
             if (getX() <= hitX - 20) {
                 setDirection(125);

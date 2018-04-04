@@ -7,6 +7,7 @@ import nl.han.ica.PancakeDestroyer.PancakeDestroyer;
 public class FriendlyPancake extends Pancake {
 
     private boolean down;
+    private int zigzagDistance = 20;
 
     public FriendlyPancake(PancakeDestroyer world) {
         super(new Sprite("src/main/java/nl/han/ica/PancakeDestroyer/media/original.png"), world);
@@ -25,33 +26,20 @@ public class FriendlyPancake extends Pancake {
         }
     }
 
-//    public int getHit() {
-//        if (hit == false) {
-//            setDirection(180);
-//            setySpeed(15);
-//            hit = true;
-//            hitX = getX();
-//            return points;
-//        } else {
-//            return -1000000;
-//        }
-//    }
-
-
     @Override
     public void update() {
         if (down) {
-            if (getX() <= Xcod - 20) {
+            if (getX() <= Xcod - zigzagDistance) {
                 setDirection(125);
             }
-            if (getX() >= Xcod + 20) {
+            if (getX() >= Xcod + zigzagDistance) {
                 setDirection(225);
             }
         } else {
-            if (getX() <= Xcod - 20) {
+            if (getX() <= Xcod - zigzagDistance) {
                 setDirection(35);
             }
-            if (getX() >= Xcod + 20) {
+            if (getX() >= Xcod + zigzagDistance) {
                 setDirection(305);
             }
         }
