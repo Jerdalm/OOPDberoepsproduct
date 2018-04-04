@@ -20,6 +20,12 @@ public class UltimateEnemyPancake extends Pancake {
         }
     }
 
+    public int getHit() {
+        super.getHit();
+        setDirection(225);
+        return points;
+    }
+
     @Override
     public void update() {
         if (hit == false) {
