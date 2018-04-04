@@ -12,7 +12,7 @@ public class ConfusedPancake extends Pancake {
     public ConfusedPancake(PancakeDestroyer world) {
         super(new Sprite("src/main/java/nl/han/ica/PancakeDestroyer/media/ConfusedPancake.png"), world);
         points = 5;
-        setxSpeed(10);
+        setxSpeed(8);
 
         if (dir < 90) {//Pannekoek komt van rechts
             setX(-getWidth());

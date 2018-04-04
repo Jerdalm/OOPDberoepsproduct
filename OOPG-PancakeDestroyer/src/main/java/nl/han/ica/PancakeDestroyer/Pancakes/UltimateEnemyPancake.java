@@ -7,7 +7,7 @@ public class UltimateEnemyPancake extends Pancake {
 
     public UltimateEnemyPancake(PancakeDestroyer world) {
         super(new Sprite("src/main/java/nl/han/ica/PancakeDestroyer/media/UltimatePancake.png"), world);
-        points = 5;
+        points = 10;
         setxSpeed(10);
         setY(Ycod);
 

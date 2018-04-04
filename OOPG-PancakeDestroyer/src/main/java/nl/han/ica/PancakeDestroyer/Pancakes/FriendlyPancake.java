@@ -12,7 +12,7 @@ public class FriendlyPancake extends Pancake {
     public FriendlyPancake(PancakeDestroyer world) {
         super(new Sprite("src/main/java/nl/han/ica/PancakeDestroyer/media/original.png"), world);
         points = -5;
-        setySpeed(10);
+        setySpeed(8);
         setX(Xcod);
 
         if (Ycod < world.getWorldHeight() / 2 - 100) {//initialiseer beginpunt

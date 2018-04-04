@@ -10,7 +10,7 @@ public class NormalEnemy extends Pancake {
         super(new Sprite("src/main/java/nl/han/ica/PancakeDestroyer/media/EvilPancake.png"), world);
 
         points = 5;
-        setxSpeed(10);
+        setxSpeed(8);
         setY(Ycod);
 
         if (Xcod < world.getWorldWidth() / 2 - 100) {//initialiseer beginpunt
