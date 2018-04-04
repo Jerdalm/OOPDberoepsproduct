@@ -6,12 +6,11 @@ import nl.han.ica.PancakeDestroyer.PancakeDestroyer;
 
 public class FriendlyPancake extends Pancake {
 
-    private int points = -5;
     private boolean down;
 
     public FriendlyPancake(PancakeDestroyer world) {
         super(new Sprite("src/main/java/nl/han/ica/PancakeDestroyer/media/original.png"), world);
-
+        points = -5;
         setySpeed(10);
         setX(Xcod);
 
@@ -26,17 +25,17 @@ public class FriendlyPancake extends Pancake {
         }
     }
 
-    public int getHit() {
-        if (hit == false) {
-            setDirection(180);
-            setySpeed(15);
-            hit = true;
-            hitX = getX();
-            return points;
-        } else {
-            return -1000000;
-        }
-    }
+//    public int getHit() {
+//        if (hit == false) {
+//            setDirection(180);
+//            setySpeed(15);
+//            hit = true;
+//            hitX = getX();
+//            return points;
+//        } else {
+//            return -1000000;
+//        }
+//    }
 
 
     @Override

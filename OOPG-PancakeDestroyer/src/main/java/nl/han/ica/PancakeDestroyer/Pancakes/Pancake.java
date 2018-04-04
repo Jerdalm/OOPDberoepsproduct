@@ -20,6 +20,7 @@ public abstract class Pancake extends SpriteObject {
     protected boolean turningPoint = false;
     protected boolean hit = false;
     protected float hitX = 0;
+    protected int points;
 
     public Pancake(Sprite sprite, PancakeDestroyer world) {
         super(sprite);
@@ -35,7 +36,16 @@ public abstract class Pancake extends SpriteObject {
 
     }
 
-    public abstract int getHit();
+    public int getHit() {
+        if (hit == false) {
+            setDirection(180);
+            hit = true;
+            hitX = getX();
+            return points;
+        } else {
+            return -1000000;
+        }
+    }
 
     public boolean mouseOverPancake() {
         if (world.mouseX > getX() && world.mouseX < (getX() + getWidth()) && world.mouseY > getY()
