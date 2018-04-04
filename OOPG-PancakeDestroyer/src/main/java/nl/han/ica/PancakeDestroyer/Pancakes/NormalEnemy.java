@@ -38,18 +38,7 @@ public class NormalEnemy extends Pancake {
     @Override
     public void update() {
         if (hit == false) {
-//            if (Xcod < 100 && getX() >= 600) {//maak een keerpunt op 70 procent van de afgelegde weg
-//                if (/*randomYcod > 300 && */!turningPoint) {
-//                    setDirection(45);
-//                    turningPoint = true;//zorg dat het keerpunt is geactiveerd en niet meer gebruikt kan worden
-//                }
-//                if (randomYcod > 300 && getX() >= 750 && turningPoint) {
-//                    setDirection(300);
-//                    turningPoint = false;
-//                } else {
-//                    setDirection(270);
-//                }
-//            }
+
             if (Xcod < world.getWorldWidth() / 2 && getX() >= world.getWorldWidth() / 4 * 3 - 100 && !turningPoint) {//maak een keerpunt op 70 procent van de afgelegde weg
                 setDirection(dir);
                 turningPoint = true;//zorg dat het keerpunt is geactiveerd en niet meer gebruikt kan worden
