@@ -49,7 +49,7 @@ public class FriendlyPancake extends Pancake {
             }
         } else {
             if (getX() <= Xcod - 20) {
-                setDirection(25);
+                setDirection(35);
             }
             if (getX() >= Xcod + 20) {
                 setDirection(305);
