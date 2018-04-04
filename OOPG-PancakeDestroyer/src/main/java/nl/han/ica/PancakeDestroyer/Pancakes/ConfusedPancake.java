@@ -3,12 +3,19 @@ package nl.han.ica.PancakeDestroyer.Pancakes;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.PancakeDestroyer.PancakeDestroyer;
 
+
+/**
+ * Een verwarde pannekoek, levert evenveel punten op als een normale pannekoek, zigzagt door het veld heen.
+ */
 public class ConfusedPancake extends Pancake {
 
     private boolean down;
     private boolean left;
     private int zigzagDistance = 50;
 
+    /**
+     * @param world is de wereld waarin de NormalEnemy Spawned
+     */
     public ConfusedPancake(PancakeDestroyer world) {
         super(new Sprite("src/main/java/nl/han/ica/PancakeDestroyer/media/ConfusedPancake.png"), world);
         points = 5;

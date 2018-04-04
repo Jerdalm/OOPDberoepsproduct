@@ -4,8 +4,14 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.PancakeDestroyer.PancakeDestroyer;
 
 
+/**
+ * Een gewone vijand, geen apart patroon, levert niet veel punten op
+ */
 public class NormalEnemy extends Pancake {
 
+    /**
+     * @param world is de wereld waarin de NormalEnemy Spawned
+     */
     public NormalEnemy(PancakeDestroyer world) {
         super(new Sprite("src/main/java/nl/han/ica/PancakeDestroyer/media/EvilPancake.png"), world);
 
@@ -21,6 +27,7 @@ public class NormalEnemy extends Pancake {
             setDirection(270);
         }
     }
+
 
     @Override
     public void update() {

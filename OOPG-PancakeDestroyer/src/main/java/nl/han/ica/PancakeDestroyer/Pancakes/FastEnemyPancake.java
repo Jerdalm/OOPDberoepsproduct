@@ -3,8 +3,14 @@ package nl.han.ica.PancakeDestroyer.Pancakes;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.PancakeDestroyer.PancakeDestroyer;
 
+/**
+ * Een snelle vijand, levert veel punten op.
+ */
 public class FastEnemyPancake extends Pancake {
 
+    /**
+     * @param world is de wereld waarin de NormalEnemy Spawned
+     */
     public FastEnemyPancake(PancakeDestroyer world) {
         super(new Sprite("src/main/java/nl/han/ica/PancakeDestroyer/media/Fastpancake.png"), world);
         points = 15;
