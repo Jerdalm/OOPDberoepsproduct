@@ -4,8 +4,8 @@ import nl.han.ica.OOPDProcessingEngineHAN.Alarm.Alarm;
 import nl.han.ica.OOPDProcessingEngineHAN.Alarm.IAlarmListener;
 import nl.han.ica.OOPDProcessingEngineHAN.Dashboard.Dashboard;
 import nl.han.ica.OOPDProcessingEngineHAN.Engine.GameEngine;
+import nl.han.ica.OOPDProcessingEngineHAN.Objects.TextObject;
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
-import nl.han.ica.waterworld.TextObject;
 import processing.core.PApplet;
 import java.util.ArrayList;
 
@@ -22,7 +22,7 @@ public class PancakeDestroyer extends GameEngine implements IAlarmListener {
     private boolean ditSpelVerdientEenTien = true;
 
     private ArrayList<TextObject> dashboardText = new ArrayList<>();
-    private TextObject gameOverText = new TextObject("GAME OVER");
+    private TextObject gameOverText = new TextObject("Game Over", 50);
 
     private PancakeSpawner spawner;
     private Alarm endOfGame;
@@ -71,8 +71,8 @@ public class PancakeDestroyer extends GameEngine implements IAlarmListener {
     private void gameOver() {
         Dashboard gameOver = new Dashboard(0, worldHeight / 2 - 50, worldWidth, 100);
         gameOver.setBackground(138, 144, 150);
-        gameOverText.setY(- (worldHeight / 2 - 75));
-        gameOverText.setX(worldWidth / 2 - 100);
+        gameOverText.setY(- (worldHeight / 2 - 115));
+        gameOverText.setX(worldWidth / 2 - 125);
         gameOver.addGameObject(gameOverText);
         addDashboard(gameOver,1);
     }
@@ -124,8 +124,8 @@ public class PancakeDestroyer extends GameEngine implements IAlarmListener {
         Dashboard dashboard = new Dashboard(x, y, dashboardWidth, dashboardHeight);
         dashboard.setBackground(138, 144, 150);
         for (int i = 0; i < nText; i++) {
-            int yNew = -i * 30 + y;
-            dashboardText.add(new TextObject(""));
+            int yNew = -i * 30 + y - 25;
+            dashboardText.add(new TextObject("", 30));
             dashboardText.get(i).setX(-x + 5);
             dashboardText.get(i).setY(-yNew);
             dashboard.addGameObject(dashboardText.get(i));
