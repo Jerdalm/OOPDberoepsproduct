@@ -44,7 +44,9 @@ public class PancakeDestroyer extends GameEngine implements IAlarmListener {
         createObjects();
 
         if (ditSpelVerdientEenTien) {
-            System.out.println("Jeremy & Jeroen hebben een 10");
+            System.out.println("Jeremy & Jeroen krijgen een 10");
+        } else {
+            System.out.println("Jeremy & Jeroen krijgen een 9");
         }
     }
 
@@ -73,7 +75,6 @@ public class PancakeDestroyer extends GameEngine implements IAlarmListener {
         gameOverText.setX(worldWidth / 2 - 100);
         gameOver.addGameObject(gameOverText);
         addDashboard(gameOver,1);
-        System.out.println("GameOVer");
     }
 
 

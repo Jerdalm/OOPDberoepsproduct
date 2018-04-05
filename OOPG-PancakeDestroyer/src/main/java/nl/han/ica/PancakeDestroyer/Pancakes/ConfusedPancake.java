@@ -27,28 +27,24 @@ public class ConfusedPancake extends Pancake {
             setY(Ycod);
             setDirection(35);
             left = true;
-            System.out.println("a");
         }
         if (dir > 90 && dir < 180) {//Pannekoek komt van onder
             setX(Xcod);
             setY(-getHeight());
             setDirection(125);
             down = true;
-            System.out.println("b");
         }
         if (dir > 180 && dir < 270) {//Pannekoek komt van links
             setX(world.getWidth() + getWidth());
             setY(Ycod);
             setDirection(215);
             right = true;
-            System.out.println("c");
         }
         if (dir > 270) {//Pannekoek komt van boven
             setX(Xcod);
             setY(world.getHeight() + getHeight());
             setDirection(305);
             up = true;
-            System.out.println("d");
         }
     }
 
@@ -56,7 +52,6 @@ public class ConfusedPancake extends Pancake {
     public void update() {
         if (hit == false) {
             if (down) {
-                System.out.println("1");
                 if (getX() <= Xcod - zigzagDistance) {
                     setDirection(125);
                 }
@@ -64,7 +59,6 @@ public class ConfusedPancake extends Pancake {
                     setDirection(225);
                 }
             } if(up) {
-                System.out.println("2");
                 if (getX() <= Xcod - zigzagDistance) {
                     setDirection(35);
                 }
@@ -73,7 +67,6 @@ public class ConfusedPancake extends Pancake {
                 }
             }
             if (right) {
-                System.out.println("3");
                 if (getY() <= Ycod - zigzagDistance) {
                     setDirection(215);
                 }
@@ -81,7 +74,6 @@ public class ConfusedPancake extends Pancake {
                     setDirection(305);
                 }
             } if (left){
-                System.out.println("4");
                 if (getY() <= Ycod - zigzagDistance) {
                     setDirection(125);
                 }

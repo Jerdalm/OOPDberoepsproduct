@@ -85,5 +85,4 @@ public class Player extends SpriteObject implements IMouseInput{
             }
         }
     }
-
 }
