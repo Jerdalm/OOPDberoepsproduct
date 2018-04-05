@@ -2,8 +2,10 @@ package nl.han.ica.PancakeDestroyer;
 
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.SpriteObject;
+import nl.han.ica.OOPDProcessingEngineHAN.UserInput.IMouseInput;
+import nl.han.ica.PancakeDestroyer.Pancakes.Pancake;
 
-public class Player extends SpriteObject {
+public class Player extends SpriteObject implements IMouseInput{
 
     private PancakeDestroyer world;
     private int points = 0;
@@ -29,27 +31,8 @@ public class Player extends SpriteObject {
         return hits;
     }
 
-    public void setPoints(int points) {
-        this.points = points;
-    }
-
-    public void setTrownBricks(int trownBricks) {
-        this.trownBricks = trownBricks;
-    }
-
     public int getPoints() {
-
         return points;
-    }
-
-    public void setHits(int hits) {
-
-        this.hits = hits;
-    }
-
-    public void setBricks(int bricks) {
-        this.bricks = bricks;
-
     }
 
     public int getBricks() {
@@ -60,4 +43,23 @@ public class Player extends SpriteObject {
         setX(world.mouseX - getWidth() / 2);
         setY(world.mouseY - getHeight() / 2);
     }
+
+    public void mousePressed(int x, int y, int button) {
+        if (bricks > 0) {
+            bricks --;
+            trownBricks ++;
+            for (Pancake pancake : world.getSpawner().getPancakes()) {
+                if (pancake.mouseOverPancake()) {
+                    int plusPoints = pancake.getHit();
+                    if (plusPoints > -900) {
+                        bricks ++;
+                        hits ++;
+                        points = points + plusPoints;
+                    } else {
+                    }
+                }
+            }
+        }
+    }
+
 }

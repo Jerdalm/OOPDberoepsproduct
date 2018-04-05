@@ -110,24 +110,8 @@ public class PancakeDestroyer extends GameEngine implements IAlarmListener {
         addDashboard(dashboard, 1);
     }
 
-    public void mousePressed() {
-        if (player.getBricks() > 0) {
-            player.setBricks(player.getBricks() - 1);
-            player.setTrownBricks(player.getTrownBricks() + 1);
-            int points = player.getPoints();
-            for (Pancake pancake : spawner.getPancakes()) {
-                if (pancake.mouseOverPancake()) {
-                    int plusPoints = pancake.getHit();
-                    if (plusPoints > -900) {
-                        player.setBricks(player.getBricks() + 1);
-                        player.setHits(player.getHits() + 1);
-                        points = points + plusPoints;
-                    } else {
-                    }
-                }
-            }
-            player.setPoints(points);
-        }
+    public PancakeSpawner getSpawner() {
+        return spawner;
     }
 
     public int getWorldWidth() {
