@@ -26,6 +26,10 @@ public class UltimateEnemyPancake extends Pancake {
         }
     }
 
+    /**
+     * @return returned het aantal punten dat de geraakte pannenkoek waard is. als de pannenkoek al geraakt is
+     * word er -1000000 geretruned. bij het uitlezen van de gethit() wordt de hit dan genegeerd.
+     */
     public int getHit() {
         super.getHit();
         setDirection(225);

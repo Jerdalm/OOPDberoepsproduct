@@ -5,12 +5,13 @@ import nl.han.ica.OOPDProcessingEngineHAN.Alarm.IAlarmListener;
 import nl.han.ica.OOPDProcessingEngineHAN.Dashboard.Dashboard;
 import nl.han.ica.OOPDProcessingEngineHAN.Engine.GameEngine;
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
-import nl.han.ica.PancakeDestroyer.Pancakes.Pancake;
 import nl.han.ica.waterworld.TextObject;
 import processing.core.PApplet;
-
 import java.util.ArrayList;
 
+/**
+ * dit is de hoofclassen van het spel PancakeDestoryer vanuit hier word alles aangeroepen en opgezet
+ */
 public class PancakeDestroyer extends GameEngine implements IAlarmListener {
 
     private int worldWidth;
@@ -38,9 +39,9 @@ public class PancakeDestroyer extends GameEngine implements IAlarmListener {
         noCursor();
         startAlarm();
 
-        createView(worldWidth, worldHeight, 255, 0, 255);
-        createObjects();
+        createView(worldWidth, worldHeight);
         createDashboard(worldWidth, 150, worldWidth / 2 + 200, worldHeight - 150, 5);
+        createObjects();
 
         if (ditSpelVerdientEenTien) {
             System.out.println("Jeremy & Jeroen hebben een 10");
@@ -62,6 +63,9 @@ public class PancakeDestroyer extends GameEngine implements IAlarmListener {
         }
     }
 
+    /**
+     * deze methode word aangeroepen als het spel voorbij is
+     */
     private void gameOver() {
         Dashboard gameOver = new Dashboard(0, worldHeight / 2 - 50, worldWidth, 100);
         gameOver.setBackground(138, 144, 150);
@@ -73,7 +77,12 @@ public class PancakeDestroyer extends GameEngine implements IAlarmListener {
     }
 
 
-    private void createView(int worldWidth, int worldHeight, int r, int g, int b) {
+    /**
+     * deze methode maakt de view aan voor PancakeDestroyer
+     * @param worldWidth de breedte voor de view
+     * @param worldHeight de hoogte voor de view
+     */
+    private void createView(int worldWidth, int worldHeight) {
         PApplet image = new PApplet();
         View view = new View(worldWidth, worldHeight);
         view.setBackground(image.loadImage("src/main/java/nl/han/ica/PancakeDestroyer/media/Background.png"));
@@ -82,12 +91,18 @@ public class PancakeDestroyer extends GameEngine implements IAlarmListener {
         size(worldWidth, worldHeight);
     }
 
+    /**
+     * deze methode maakt alle gameobjects aan op de pannenkoeken na
+     */
     private void createObjects() {
         player = new Player(this);
         addGameObject(player, 0, 0, 5);
         spawner = new PancakeSpawner(this);
     }
 
+    /**
+     * deze methode update het dashboard
+     */
     private void updateDashboard() {
         int thisMillis = millis() / 1000;
         dashboardText.get(0).setText("Bricks: " + player.getBricks());
@@ -97,6 +112,13 @@ public class PancakeDestroyer extends GameEngine implements IAlarmListener {
         dashboardText.get(4).setText("Time Left: " + (gameTime - thisMillis));
     }
 
+    /**
+     * @param dashboardWidth de breedte van het te maken dashboard
+     * @param dashboardHeight de hoogte van het te maken dashboard
+     * @param x de x coordinaat van het te maken dashboard
+     * @param y de y coordinaat van het te maken dashboard
+     * @param nText de hoeveelheid text objecten die in het dashboard moeten komen te staan
+     */
     private void createDashboard(int dashboardWidth, int dashboardHeight, int x, int y, int nText) {
         Dashboard dashboard = new Dashboard(x, y, dashboardWidth, dashboardHeight);
         dashboard.setBackground(138, 144, 150);
@@ -110,14 +132,23 @@ public class PancakeDestroyer extends GameEngine implements IAlarmListener {
         addDashboard(dashboard, 1);
     }
 
+    /**
+     * @return geeft het de variable met het object pancakespawner erin
+     */
     public PancakeSpawner getSpawner() {
         return spawner;
     }
 
+    /**
+     * @return geeft de wereld breedte
+     */
     public int getWorldWidth() {
         return worldWidth;
     }
 
+    /**
+     * @return geeft de wereld hoogte
+     */
     public int getWorldHeight() {
         return worldHeight;
     }

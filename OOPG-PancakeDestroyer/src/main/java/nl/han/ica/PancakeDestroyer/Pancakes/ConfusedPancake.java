@@ -3,7 +3,6 @@ package nl.han.ica.PancakeDestroyer.Pancakes;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.PancakeDestroyer.PancakeDestroyer;
 
-
 /**
  * Een verwarde pannekoek, levert evenveel punten op als een normale pannekoek, zigzagt door het veld heen.
  */

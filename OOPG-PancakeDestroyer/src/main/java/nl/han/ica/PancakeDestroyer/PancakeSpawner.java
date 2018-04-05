@@ -1,24 +1,35 @@
 package nl.han.ica.PancakeDestroyer;
 
 import nl.han.ica.PancakeDestroyer.Pancakes.*;
-
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * maakt het object PancakeSpawner die verantwoordelijk is voor het spawnen en verwijderen van pancakes
+ */
 public class PancakeSpawner {
 
     PancakeDestroyer world;
     private ArrayList<Pancake> pancakes = new ArrayList<>();
 
+    /**
+     * @param world de wereld waarin de PancakeSpawner zich in bevind
+     */
     public PancakeSpawner(PancakeDestroyer world) {
         this.world = world;
     }
 
+    /**
+     * deze methode word iedere keer opnieuw aangeroepen
+     */
     public void update() {
         spawnPancakes();
         deletePancakes();
     }
 
+    /**
+     * deze methode spawned een random pancake
+     */
     private void spawnPancakes() {
         Random random = new Random();
         int type = random.nextInt(5);
@@ -48,6 +59,9 @@ public class PancakeSpawner {
     }
 
 
+    /**
+     * deze methode verwijderd een pancake als deze buiten het scherm komt
+     */
     private void deletePancakes() {
         for (int i = 0; i < pancakes.size(); i++) {
             if (pancakes.get(i).getX() > world.getWorldWidth() + 200 || pancakes.get(i).getX() < -200 ||
@@ -59,6 +73,9 @@ public class PancakeSpawner {
         }
     }
 
+    /**
+     * @return de arraylist van pancakes
+     */
     public ArrayList<Pancake> getPancakes() {
         return pancakes;
     }
